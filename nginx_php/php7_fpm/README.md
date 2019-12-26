@@ -1,6 +1,6 @@
 ## php7_fpm
 ```js
-docker rm -f $(docker ps -aq); docker rmi ifpm; docker docker build -t ifpm .;
+docker rm -f $(docker ps -aq); docker rmi ifpm; docker build -t ifpm .;
 ```
 
 ```js
