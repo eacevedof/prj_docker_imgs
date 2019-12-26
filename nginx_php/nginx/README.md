@@ -4,7 +4,7 @@ docker rm -f $(docker ps -aq); docker volume prune -y; docker rmi ingx; docker b
 
 ```js
 //cmder ok
-docker run -d --hostname hngx --name cngx --rm -p 8000:80 -v E:\projects\prj_docker_imgs\nginx_php\app:/code ingx
+docker run -d --hostname hngx --name cngx --rm -p 8000:80 -v E:\projects\prj_docker_imgs\nginx_php\app:/code  --network netngx ingx
 
 docker exec -it cngx bash
 ```
