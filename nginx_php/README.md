@@ -40,6 +40,13 @@ docker-compose .
 ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1157x266/5ac701afe77cd5de6807efa16b58ed56/image.png)
 
 ```s
+E:\projects\prj_docker_imgs\nginx_php (master -> origin)
+λ docker swarm leave --force
+Node left the swarm.
+```
+
+<hr/>
+```s
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ingx                latest              00f67a848517        About an hour ago   179MB
