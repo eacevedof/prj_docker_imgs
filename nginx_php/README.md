@@ -45,6 +45,7 @@ Node left the swarm.
 ```
 
 <hr/>
+
 ```s
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
