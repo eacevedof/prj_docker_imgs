@@ -31,6 +31,17 @@ docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/
 ```
 ![](https://trello-attachments.s3.amazonaws.com/5c0935ef647dd339b9e7f791/5e0520ef68ff3a22a9ce167b/48da96d4a4f59708cb49ea1bc341f991/image.png)
 
+<hr/>
+## Con docker-compose
+
+
+```sh
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ingx                latest              00f67a848517        About an hour ago   179MB
+ifpm                latest              19ae26a176d3        About an hour ago   458MB
+```
+
 ## Resultado:
 ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/952x342/294eebaed4bfdebf753ba26796d28456/image.png)
 
