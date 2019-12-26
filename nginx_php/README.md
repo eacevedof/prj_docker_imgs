@@ -35,11 +35,21 @@ docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/
 ## Con docker-compose
 
 
-```sh
+```s
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ingx                latest              00f67a848517        About an hour ago   179MB
 ifpm                latest              19ae26a176d3        About an hour ago   458MB
+```
+
+```s
+# nginx
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
+b5b14b87a493        cngx                0.00%               2.535MiB / 1.952GiB   0.13%               314kB / 315kB       0B / 0B             3
+
+# fpm
+CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
+99e21d061e02        cfpm                0.01%               6.781MiB / 1.952GiB   0.34%               13.3kB / 305kB      0B / 0B             4
 ```
 
 ## Resultado:
