@@ -33,7 +33,10 @@ docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/
 <hr/>
 
 ## Con docker-compose
-
+```s
+#dentro de nginx_php
+docker-compose .
+```
 
 ```s
 $ docker images
