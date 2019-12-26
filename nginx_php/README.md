@@ -18,7 +18,7 @@ docker network create netngx
 # mingw64:
 docker build -t ifpm .
 # levantamos el contenedor cfpm 
-docker run -d --hostname hfpm --name cfpm --rm -v E:\projects\prj_docker_imgs\nginx_php\app:/code --network netngx ifpm
+docker run -d --hostname hfpm --name cfpm --rm -v <nginx_php_folder>\app:/code --network netngx ifpm
 # con esto ya tenemos el cgi ejecutando por el puerto 9000
 
 ############
@@ -27,7 +27,7 @@ docker run -d --hostname hfpm --name cfpm --rm -v E:\projects\prj_docker_imgs\ng
 # entramos en la carpeta nginx y ejecutamos:
 docker build -t ingx .
 # levantamos el contenedor cngx
-docker run -d --hostname hngx --name cngx -p 3000:80 -v E:\projects\prj_docker_imgs\nginx_php\app:/code -v E:\projects\prj_docker_imgs\nginx_php\nginx\site.conf:/etc/nginx/conf.d/default.conf --network netngx ingx
+docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/code -v <nginx_php_folder>\nginx\site.conf:/etc/nginx/conf.d/default.conf --network netngx ingx
 ```
 
 ## Resultado:
