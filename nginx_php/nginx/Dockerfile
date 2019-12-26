@@ -8,4 +8,4 @@ RUN apt-get update
 # RUN apt-get install -y iputils-ping 
 # RUN apt-get install -y vim
 
-COPY ./nginx/ /etc/nginx/conf.d/
+ADD ./nginx/site.conf /etc/nginx/conf.d/
