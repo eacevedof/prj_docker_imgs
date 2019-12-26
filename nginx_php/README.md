@@ -29,6 +29,7 @@ docker build -t ingx .
 # levantamos el contenedor cngx
 docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/code -v <nginx_php_folder>\nginx\site.conf:/etc/nginx/conf.d/default.conf --network netngx ingx
 ```
+![](https://trello-attachments.s3.amazonaws.com/5c0935ef647dd339b9e7f791/5e0520ef68ff3a22a9ce167b/48da96d4a4f59708cb49ea1bc341f991/image.png)
 
 ## Resultado:
 ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/952x342/294eebaed4bfdebf753ba26796d28456/image.png)
