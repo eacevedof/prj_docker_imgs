@@ -1,5 +1,5 @@
 ```js
-docker rm -f $(docker ps -aq); docker volume prune -y; docker rmi ingx; docker build -t ingx .; 
+docker rm -f $(docker ps -aq); docker volume prune; docker rmi ingx; docker build -t ingx .; 
 ```
 
 ```js
