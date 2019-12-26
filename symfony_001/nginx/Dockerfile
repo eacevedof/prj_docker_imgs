@@ -1,10 +1,14 @@
-FROM nginx
+FROM nginx:1.17.alpine
 
 LABEL maintainer="Eduardo A.F. <eacevedof@gmail.com>"
 
 RUN apt-get update 
+# esto genera más errores ^^
+# RUN apt-get install -y apt-utils 
 RUN apt-get install -y curl
 RUN apt-get install -y iputils-ping 
+RUN apt-get install -y vim
+# RUN apt-get -y install php7.0-fpm
 
 # COPY nginx.conf /etc/nginx/
 # COPY symfony.conf /etc/nginx/conf.d/
