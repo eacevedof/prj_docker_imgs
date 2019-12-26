@@ -1,0 +1,1 @@
+`docker rm -f $(docker ps -aq); docker rmi ingx; docker build -t ingx .; docker run -d --hostname hngx --name cngx --rm -p 8000:80 ingx`
