@@ -39,6 +39,7 @@ docker-compose .
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1157x266/5ac701afe77cd5de6807efa16b58ed56/image.png)
 ```s
+# quita el mensaje The docker engine you are using is running in swarm mode
 E:\projects\prj_docker_imgs\nginx_php (master -> origin)
 λ docker swarm leave --force
 Node left the swarm.
