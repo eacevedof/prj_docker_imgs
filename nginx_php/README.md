@@ -7,7 +7,7 @@
     - Son los archivos php que se servirán
 
 ## Sin docker-compose
-```py
+```s
 # creamos la red donde convivirán nuestros contenedores
 docker network create netngx
 
