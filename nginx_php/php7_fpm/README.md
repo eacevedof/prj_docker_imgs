@@ -1,0 +1,1 @@
+`docker rm -f $(docker ps -aq); docker rmi ifpm; docker build -t ifpm .; docker run -d --hostname hfpm --name cfpm --rm ifpm`
