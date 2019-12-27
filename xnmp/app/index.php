@@ -18,7 +18,7 @@ function test_mysql()
     try 
     {
         $pdo = new \PDO($dsn, $user, $pass, $options);
-        $sql = "SELECT * FROM help_topic WHERE 1";
+        $sql = "SELECT * FROM help_topic WHERE 1 LIMIT 10";
         echo "<pre>";
         echo "<b>$sql</b>\n";
         $stmt = $pdo->query($sql);
@@ -26,6 +26,7 @@ function test_mysql()
         {
             print_r($row);
         }
+        echo "</pre>";
     } 
     catch (\PDOException $e) 
     {

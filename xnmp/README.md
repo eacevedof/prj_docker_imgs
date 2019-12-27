@@ -8,4 +8,6 @@ docker-compose down --rmi all
 - mariadb se queda reiniciando ^^
   - era un tema de los volumenes
 - el php.ini lo coge del CGI, en `root@hfpm1: /usr/local/etc/php`
-- hay que habilitar la linea: `extension=pdo_mysql`
+- ~~hay que habilitar la linea: `extension=pdo_mysql`~~
+  - No hacia falta. Era solo un tema de instalación de driver 
+  - `RUN docker-php-ext-install pdo pdo_mysql`
