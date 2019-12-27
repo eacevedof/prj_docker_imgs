@@ -7,11 +7,11 @@
   - Revisa el readme.md
 
 ### Indice de grupos de servicios
-- **nginx_php**
+- **xnp**
   - Contenedor Php FPM *FastCGI Process Manager*
   - Contenedor NGINX 
   ```s
-  E:\projects\prj_docker_imgs\nginx_php (master -> origin)
+  E:\projects\prj_docker_imgs\xnp (master -> origin)
   λ docker-compose -p np1 ps
   El sistema no puede encontrar la ruta especificada.
   Name              Command              State          Ports
@@ -23,3 +23,13 @@
   - Contenedor MariaDB
   - Contenedor Php FPM *FastCGI Process Manager*
   - Contenedor NGINX 
+  ```s
+  E:\projects\prj_docker_imgs\xnmp (master -> origin)
+  λ docker-compose ps
+  El sistema no puede encontrar la ruta especificada.
+  Name               Command               State           Ports
+  ------------------------------------------------------------------------
+  cfpm1    docker-php-entrypoint php-fpm    Up      9000/tcp
+  cmari1   docker-entrypoint.sh mysql ...   Up      0.0.0.0:3306->3306/tcp
+  cngx1    nginx -g daemon off;             Up      0.0.0.0:3000->80/tcp  
+  ```
