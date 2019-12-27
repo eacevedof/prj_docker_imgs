@@ -15,8 +15,8 @@ services:
       # MYSQL_PASSWORD: u1
 
     volumes:
-      - ./db_volume/docker/mariadb:/docker-entrypoint-initdb.d/
-      - ./db_volume/var/mariadb:/var/lib/mysql
+      - ./db_volume/initdb:/docker-entrypoint-initdb.d/
+      - ./db_volume/mysql:/var/lib/mysql
     ports:
       - "3306:3306"      
     networks:
