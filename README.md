@@ -7,7 +7,7 @@
   - Revisa el readme.md
 
 ### Indice de grupos de servicios
-- **xnp**
+- [**xnp**](https://github.com/eacevedof/prj_docker_imgs/tree/master/xnp#montar-nginx-para-que-sirva-php)
   - Contenedor Php FPM *FastCGI Process Manager*
   - Contenedor NGINX 
   ```s
@@ -19,7 +19,7 @@
   cfpm   docker-php-entrypoint php-fpm   Up      9000/tcp
   cngx   nginx -g daemon off;            Up      0.0.0.0:3000->80/tcp  
   ```
-- **xnmp**
+- [**xnmp**](https://github.com/eacevedof/prj_docker_imgs/tree/master/xnmp#xnmp)
   - Contenedor MariaDB
   - Contenedor Php FPM *FastCGI Process Manager*
   - Contenedor NGINX 
