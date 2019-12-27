@@ -4,16 +4,21 @@ version: '3'
 services:
   dbmaria:
     build: ./mariadb/
-    container_name: cmari1    
+    container_name: cmari1 
+    restart: always   
     hostname: hmari1
-    # volumes:
-    # - ./db/mysql:/var/lib/mysql
+    
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: db_xnmp
       MYSQL_USER: u1
       MYSQL_PASSWORD: u1
 
+    volumes:
+      #- ./mariadb/my.cnf:/etc/mysql/conf.d/
+      - ./db/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"      
     networks:
       - netxnmp    
 
@@ -41,6 +46,9 @@ services:
       - netxnmp
     depends_on:
       - dbmaria
+
+#volumes:
+#  - ./db/mysql:/var/lib/mysql
 
 networks:
   netxnmp:
