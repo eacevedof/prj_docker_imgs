@@ -4,7 +4,8 @@ version: '3'
 services:
   dbmaria:
     build: ./mariadb/
-    container_name: mari1    
+    container_name: cmari1    
+    hostname: hmari1
     volumes:
       - ./db/mysql:/var/lib/mysql
     environment:
@@ -12,14 +13,27 @@ services:
       MYSQL_DATABASE: db_xnmp
       MYSQL_USER: u1
       MYSQL_PASSWORD: u1
-    restart: always
 
+    restart: always
+    
     networks:
       - netxnmp    
+
+  php:
+    build: ./php7_fpm/
+    container_name: cfpm1
+    hostname: hfpm1
+    volumes:
+      - ./app:/code
+    networks:
+      - netxnmp
+    depends_on:
+        - dbmaria
 
   web:
     build: ./nginx/
     container_name: cngx1
+    hostname: hngx1
     ports:
       - "3000:80"
     volumes:
@@ -27,14 +41,8 @@ services:
       - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
       - netxnmp
-
-  php:
-    build: ./php7_fpm/
-    container_name: cfpm1
-    volumes:
-      - ./app:/code
-    networks:
-      - netxnmp      
+    depends_on:
+      - dbmaria
 
 networks:
   netxnmp:
