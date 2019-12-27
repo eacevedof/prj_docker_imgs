@@ -40,7 +40,12 @@ docker-compose .
 docker-compose -p np1 up -d
 
 # ver los contenedores del proyecto np1
-docker-compose -p np1 ps
+λ docker-compose -p np1 ps
+El sistema no puede encontrar la ruta especificada.
+Name              Command              State          Ports
+-------------------------------------------------------------------
+cfpm   docker-php-entrypoint php-fpm   Up      9000/tcp
+cngx   nginx -g daemon off;            Up      0.0.0.0:3000->80/tcp
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1157x266/5ac701afe77cd5de6807efa16b58ed56/image.png)
 ```s
@@ -71,6 +76,9 @@ CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   
 
 ## Resultado:
 ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/952x342/294eebaed4bfdebf753ba26796d28456/image.png)
+
+## Quitando todo los contenedores
+- `docker-compose down`
 
 ## Fuente consultada:
 - [php app with nginx](http://geekyplatypus.com/dockerise-your-php-application-with-nginx-and-php7-fpm/)
