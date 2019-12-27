@@ -6,16 +6,14 @@ services:
     build: ./mariadb/
     container_name: cmari1    
     hostname: hmari1
-    volumes:
-      - ./db/mysql:/var/lib/mysql
+    # volumes:
+    # - ./db/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: db_xnmp
       MYSQL_USER: u1
       MYSQL_PASSWORD: u1
 
-    restart: always
-    
     networks:
       - netxnmp    
 
@@ -28,7 +26,7 @@ services:
     networks:
       - netxnmp
     depends_on:
-        - dbmaria
+      - dbmaria
 
   web:
     build: ./nginx/
