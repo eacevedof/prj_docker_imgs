@@ -11,3 +11,4 @@ docker-compose down --rmi all
 - ~~hay que habilitar la linea: `extension=pdo_mysql`~~
   - No hacia falta. Era solo un tema de instalación de driver 
   - `RUN docker-php-ext-install pdo pdo_mysql`
+- La bd permanece ok
