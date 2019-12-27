@@ -36,6 +36,11 @@ docker run -d --hostname hngx --name cngx -p 3000:80 -v <nginx_php_folder>\app:/
 ```s
 #dentro de nginx_php
 docker-compose .
+# ó
+docker-compose -p np1 up -d
+
+# ver los contenedores del proyecto np1
+docker-compose -p np1 ps
 ```
 - ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1157x266/5ac701afe77cd5de6807efa16b58ed56/image.png)
 ```s
