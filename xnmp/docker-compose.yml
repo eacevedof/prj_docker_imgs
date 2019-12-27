@@ -5,22 +5,29 @@ services:
   dbmaria:
     build: ./mariadb/
     container_name: cmari1 
-    restart: always   
+    # restart: always
     hostname: hmari1
     
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: db_xnmp
-      MYSQL_USER: u1
-      MYSQL_PASSWORD: u1
+      # MYSQL_DATABASE: db_xnmp
+      # MYSQL_USER: u1
+      # MYSQL_PASSWORD: u1
 
     volumes:
-      #- ./mariadb/my.cnf:/etc/mysql/conf.d/
-      - ./db/mysql:/var/lib/mysql
+      - ./docker/mariadb:/docker-entrypoint-initdb.d/
+      - ./var/mariadb:/var/lib/mysql
     ports:
       - "3306:3306"      
     networks:
       - netxnmp    
+    command:
+      'mysqld --innodb-flush-method=fsync'
+  #adminer:
+    #image: adminer
+    #restart: always
+    #ports:
+    # - 8080:8080
 
   php:
     build: ./php7_fpm/
