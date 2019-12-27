@@ -1,13 +1,25 @@
+# xnmp
 version: '3'
 
 services:
-  db:
-    # dockerfile
+  dbmaria:
     build: ./mariadb/
+    container_name: mari1    
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db_xnmp
+      MYSQL_USER: u1
+      MYSQL_PASSWORD: u1
+    restart: always
+
+    networks:
+      - netxnmp    
 
   web:
     build: ./nginx/
-    container_name: cngx
+    container_name: cngx1
     ports:
       - "3000:80"
     volumes:
@@ -18,7 +30,7 @@ services:
 
   php:
     build: ./php7_fpm/
-    container_name: cfpm
+    container_name: cfpm1
     volumes:
       - ./app:/code
     networks:

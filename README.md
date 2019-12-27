@@ -1,5 +1,11 @@
 ## Repositorio de imágenes de docker
 
+### Pasos
+- Clona este repo: `git clone https://github.com/eacevedof/prj_docker_imgs.git`
+- Entra en la carpeta que te interesa
+- Ejecuta: `docker-compose up`
+  - Revisa el readme.md
+
 ### Indice de grupos de servicios
 - **nginx_php**
   - Contenedor Php FPM *FastCGI Process Manager*
