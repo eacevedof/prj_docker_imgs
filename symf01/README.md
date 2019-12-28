@@ -10,3 +10,5 @@ docker-compose down --rmi all
 ### Instalación symfony
 - composer create-project symfony/skeleton myapi **para api**
 - composer create-project symfony/website-skeleton mysite **la clasica de toda la vida**
+  - Esto en windows va ok 
+  - En el contenedor no tira
