@@ -3,7 +3,7 @@ FROM php:7-fpm
 
 RUN apt-get update
 # RUN apt-get install -y iputils-ping 
-# RUN apt-get install -y vim
+RUN apt-get install -y vim
 
 # esto escribe en /usr/local/etc/php/conf.d/<fichero-extension>.ini
 # por cada php-ext-install se crea un fichero
