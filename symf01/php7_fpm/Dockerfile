@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install zip
 
-RUN apt-get install -y zip 
-RUN apt-get install -y unzip 
+# RUN apt-get install -y zip 
+# RUN apt-get install -y unzip 
 
 # RUN apt-get install -y git-all
 # RUN apt-get install -y wget
