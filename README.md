@@ -33,3 +33,8 @@
   cmari1   docker-entrypoint.sh mysql ...   Up      0.0.0.0:3306->3306/tcp
   cngx1    nginx -g daemon off;             Up      0.0.0.0:3000->80/tcp  
   ```
+- [**symf01**]()
+  - Contenedor MariaDB
+  - Contenedor Php FPM *FastCGI Process Manager*
+  - Contenedor NGINX
+  -  

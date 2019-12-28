@@ -1,7 +1,11 @@
 # php7_fpm
 FROM php:7-fpm
 
-RUN apt-get update
-# RUN apt-get install -y iputils-ping 
-RUN apt-get install -y vim
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && apt-get install -y libmcrypt-dev \
+  # mysql-client libmagickwand-dev --no-install-recommends \
+  && pecl install imagick \ 
+  && docker-php-ext-enable imagick \
+  && docker-php-ext-install mcrypt pdo_mysql
+
+# Install Composer sS: --silent --show-error
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
