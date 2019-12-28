@@ -10,7 +10,7 @@ docker-compose down --rmi all
 ### Instalación symfony
 - composer create-project symfony/skeleton myapi **para api**
 - composer create-project symfony/website-skeleton mysite **la clasica de toda la vida**
-- **despues de instalar symfony**
+- **despues de instalar symfony con composer**
 ```s
 Some files may have been created or updated to configure your new packages. 
 Please review, edit and commit them: these files are yours. 
@@ -41,3 +41,27 @@ What's next?
 	under framework.messenger.routing and replace amqp with your transport name of choice. 
 	* Read the documentation at https://symfony.com/doc/master/mailer.html
 ```
+### **instalando symfony-cli**
+- `wget https://get.symfony.com/cli/installer -O - | bash`
+```s
+Symfony CLI installer
+Environment check
+[*] cURL is installed
+[*] Gzip is installed
+[ ] Warning: Git will be needed.
+
+Uncompress binary...
+Making the binary executable...
+Installing the binary into your home directory...
+The binary was saved to: /root/.symfony/bin/symfony
+The Symfony CLI v4.11.3 was installed successfully!
+Add this to your shell configuration file:
+export PATH="$HOME/.symfony/bin:$PATH"
+Start a new shell, and then run 'symfony'
+
+Or install it globally on your system:                
+mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
+symfony server:start
+```
+- Hay un bug sobre **symfony server:start**: [PHP server exited unexpectedly: exit status 78](https://github.com/symfony/cli/issues/183)
