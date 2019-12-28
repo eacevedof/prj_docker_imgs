@@ -19,8 +19,9 @@ RUN docker-php-ext-install zip
 # RUN apt-get install -y unzip 
 
 # RUN apt-get install -y git-all
-RUN apt-get install -y wget \
-    wget https://get.symfony.com/cli/installer -O - | bash
+RUN apt-get install -y wget 
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 # Install Composer sS: --silent --show-error
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
