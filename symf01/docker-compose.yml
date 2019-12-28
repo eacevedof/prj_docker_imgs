@@ -7,8 +7,8 @@ services:
     container_name: cmari01
     hostname: hmari01
     
-    environment:
-      MYSQL_ROOT_PASSWORD:
+    # environment:
+      # MYSQL_ROOT_PASSWORD: 1234
 
     volumes:
       - ./db_volume/initdb:/docker-entrypoint-initdb.d/
@@ -16,22 +16,22 @@ services:
     ports:
       - "3306:3306"      
     networks:
-      - netsymf01    
+      - net01    
     command:
       'mysqld --innodb-flush-method=fsync'
 
-  php:
+  phpcgi:
     build: ./php7_fpm/
     container_name: ccgi01
     hostname: hcgi01
     volumes:
       - ./app:/code
     networks:
-      - netsymf01
+      - net01
     depends_on:
       - dbmaria
 
-  web:
+  nginx:
     build: ./nginx/
     container_name: cngx1
     hostname: hngx1
@@ -41,10 +41,10 @@ services:
       - ./app:/code
       - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - netsymf01
+      - net01
     depends_on:
       - dbmaria
 
 networks:
-  netsymf01:
+  net01:
     driver: bridge
