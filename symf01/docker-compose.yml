@@ -28,7 +28,7 @@ services:
       - ./www/html:/var/www/html
     ports:
       # comprobar entrypoint.sh
-      - "8000":"8000"
+      - "1000":"8000"
     networks:
       - net01
     depends_on:

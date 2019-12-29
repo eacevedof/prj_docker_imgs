@@ -2,7 +2,7 @@
 
 ### Este stack incluye los siguientes contenedores
 - mariadb
-- php7_fpm
+- php7_fpm (4.9.184-linuxkit)
   - vim
   - composer
   - symfony cli
@@ -11,6 +11,13 @@
     - pdo mysql
     - zip
 
+### Comandos de apoyo:
+```s
+docker rm -f csym & docker rmi isym & docker build -t isym . & docker run -d -p 1000:8000 --rm --name csym isym
+docker exec -it csym bash
+php -S 0.0.0.0:8000 -t /var/www/html/symsite/public
+docker run -it --name csym isym bash
+```
 ### Despues de instalar
 ```s
 # publica el sitio para cualquier origen
