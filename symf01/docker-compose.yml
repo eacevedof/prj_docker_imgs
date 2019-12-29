@@ -16,7 +16,7 @@ services:
     ports:
       - "3306:3306"      
     networks:
-      - net01    
+      - net01
     command:
       'mysqld --innodb-flush-method=fsync'
 
@@ -26,6 +26,9 @@ services:
     hostname: hcgi01
     volumes:
       - ./www/html:/var/www/html
+    ports:
+      # comprobar entrypoint.sh
+      - "8000":"8000"
     networks:
       - net01
     depends_on:
