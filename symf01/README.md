@@ -1,15 +1,16 @@
 ## symf01
-```s
-docker-compose up -d
-#
-docker-compose down --rmi all
-```
-# notas
-- Incluye composer en php7_fpm
+
+### Este stack incluye los siguientes contenedores
+- mariadb
+- php7_fpm
+  - composer
+  - symfony cli
+  - /var/www/html/symfsite
+
 
 ### Instalación symfony
 - composer create-project symfony/skeleton myapi **para api**
-- composer create-project symfony/website-skeleton mysite **la clasica de toda la vida**
+- composer create-project symfony/website-skeleton symfsite **la clasica de toda la vida**
 - **despues de instalar symfony con composer**
 ```s
 Some files may have been created or updated to configure your new packages. 
@@ -76,4 +77,3 @@ symfony server:start
   ```
   - solucion:
   - Habia que instalar **libzip-dev** y ejecutar **docker-php-ext-install zip**
-  
