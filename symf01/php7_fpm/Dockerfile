@@ -19,7 +19,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN wget https://get.symfony.com/cli/installer -O - | bash && \
     mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
-ADD entrypoint.sh /var/www/html
+# ADD ./entrypoint.sh /var/www/html
 
 # instala symsite si no existe y lanza el servicio
 # CMD /var/www/html/entrypoint.sh
