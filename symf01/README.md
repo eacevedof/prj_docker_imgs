@@ -25,6 +25,7 @@ d2090f5c890f  isym    "docker-php-entrypoi…"   3 minutes ago   Up 3 minutes  9
 - composer create-project symfony/skeleton myapi **para api**
 - composer create-project symfony/website-skeleton symsite **la clasica de toda la vida**
 - **despues de instalar symfony con composer**
+  - ![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/807x585/6294ee0588d7755fd2bec51046787629/image.png)
 ```s
 Some files may have been created or updated to configure your new packages. 
 Please review, edit and commit them: these files are yours. 

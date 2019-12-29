@@ -1,10 +1,8 @@
 #!/bin/bash
 echo "START entrypoint.sh"
 
-cd /var/www/html
-
-if [ ! -d symsite ]; then
-  composer create-project symfony/website-skeleton symsite
+if [ ! -d /var/www/html/symsite ]; then
+  (cd /var/www/html/ && composer create-project symfony/website-skeleton symsite)
 fi
 
 # arranca el servicio
