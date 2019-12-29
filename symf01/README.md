@@ -81,6 +81,14 @@ symfony server:start
 - Hay un bug sobre **symfony server:start**: [PHP server exited unexpectedly: exit status 78](https://github.com/symfony/cli/issues/183)
 
 ### Errores
+- entrypoint
+  ```s
+  docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: 
+  starting container process caused 
+  "exec: \"php -S 0.0.0.0:8000 -t /var/www/html/symsite/public\": 
+  stat php -S 0.0.0.0:8000 -t /var/www/html/symsite/public: no such file or directory": unknown.  
+  ```
+  - voy a probar con entrypoint.sh
 - Al instalar con composer symfony
   ```s
   Installing psr/container (1.0.0): Cloning b7ce3b1764 from cache 
