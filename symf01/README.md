@@ -65,3 +65,15 @@ mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 symfony server:start
 ```
 - Hay un bug sobre **symfony server:start**: [PHP server exited unexpectedly: exit status 78](https://github.com/symfony/cli/issues/183)
+
+### Errores
+- Al instalar con composer symfony
+  ```s
+  Installing psr/container (1.0.0): Cloning b7ce3b1764 from cache 
+  Failed to download psr/cache from dist: The zip extension and unzip command are both missing, skipping.
+  The php.ini used by your command-line PHP is: /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
+  Now trying to download from source ...
+  ```
+  - solucion:
+  - Habia que instalar **libzip-dev** y ejecutar **docker-php-ext-install zip**
+  
