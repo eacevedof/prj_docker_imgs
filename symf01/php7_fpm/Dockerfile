@@ -22,4 +22,4 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash && \
 ADD entrypoint.sh /var/www/html
 
 # instala symsite si no existe y lanza el servicio
-CMD /var/www/html/entrypoint.sh
+# CMD /var/www/html/entrypoint.sh

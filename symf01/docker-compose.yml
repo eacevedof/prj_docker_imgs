@@ -2,39 +2,42 @@
 version: "3"
 
 services:
-  dbmaria:
-    build: ./mariadb/
-    container_name: cmari01
-    hostname: hmari01
+  # dbmaria:
+  #   build: ./mariadb/
+  #   container_name: cmari01
+  #   hostname: hmari01
 
-    environment:
-      MYSQL_ROOT_PASSWORD: 1234
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: 1234
 
-    volumes:
-      - ./db_volume/initdb:/docker-entrypoint-initdb.d/
-      - ./db_volume/mysql:/var/lib/mysql
-    
-    ports:
-      - "3306:3306"      
-    networks:
-      - net
-    command:
-      'mysqld --innodb-flush-method=fsync'
-
-  # php:
-  #   build: ./php7_fpm/
-  #   container_name: ccgi01
-  #   hostname: hcgi01
   #   volumes:
-  #     - ./www/html:/var/www/html
+  #     - ./db_volume/initdb:/docker-entrypoint-initdb.d/
+  #     - ./db_volume/mysql:/var/lib/mysql
+    
   #   ports:
-  #     # comprobar entrypoint.sh
-  #     - "1000:8000"
+  #     - "3306:3306"      
   #   networks:
   #     - net
-  #   depends_on:
-  #     - dbmaria
+  #   command:
+  #     'mysqld --innodb-flush-method=fsync'
 
+  php:
+    build: ./php7_fpm/
+    container_name: cphp01
+    hostname: hphp01
+    volumes:
+      - ./www/html:/var/www/html
+    ports:
+      # comprobar entrypoint.sh
+      - "1000:8000"
+
+    networks:
+      - net
+    #depends_on:
+    #  - dbmaria
+    command:
+      'bash /var/www/html/entrypoint.sh'
+      
 networks:
   net:
     driver: bridge
