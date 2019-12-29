@@ -10,6 +10,8 @@
   - estensiones php:
     - pdo mysql
     - zip
+- despues de ejecutar: `docker-compose down --rmi all; docker-compose up`
+- ![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/687x236/98c518912938fc94b94947549ca83945/image.png)
 
 ### Comandos de apoyo:
 ```s
