@@ -31,20 +31,6 @@ services:
     depends_on:
       - dbmaria
 
-  nginx:
-    build: ./nginx/
-    container_name: cngx1
-    hostname: hngx1
-    ports:
-      - "3000:80"
-    volumes:
-      - ./app:/code
-      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - net01
-    depends_on:
-      - dbmaria
-
 networks:
   net01:
     driver: bridge
