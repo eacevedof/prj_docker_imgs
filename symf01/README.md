@@ -89,6 +89,14 @@ symfony server:start
 - Hay un bug sobre **symfony server:start**: [PHP server exited unexpectedly: exit status 78](https://github.com/symfony/cli/issues/183)
 
 ### Errores
+- mariadb y volumenes
+  ```s
+  ERROR: for cmari01  Cannot start service dbmaria:
+  error while creating mount source path '/host_mnt/e/projects/prj_docker_imgs/symf01/db_volume/initdb': 
+  mkdir /host_mnt/e: file exists
+  ```
+  - He habilitado control total a "todos" a la carpeta symf01
+  - He reiniciado docker
 - entrypoint
   ```s
   docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: 
