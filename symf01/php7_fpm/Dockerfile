@@ -22,5 +22,7 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash && \
 WORKDIR /var/www/html
 RUN composer create-project symfony/website-skeleton symsite
 
+ADD entrypoint.sh /var/www/html
+CMD /var/www/html/entrypoint.sh
 # cuando se arranca el contenedor
-ENTRYPOINT [ "php -S 0.0.0.0:8000 -t /var/www/html/symsite/public" ]
+# ENTRYPOINT [ "php -S 0.0.0.0:8000 -t /var/www/html/symsite/public" ]
