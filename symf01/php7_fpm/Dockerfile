@@ -20,4 +20,4 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash && \
     mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 WORKDIR /var/www/html
-RUN composer create-project symfony/website-skeleton symfsite
+RUN composer create-project symfony/website-skeleton symsite

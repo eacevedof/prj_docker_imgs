@@ -3,14 +3,27 @@
 ### Este stack incluye los siguientes contenedores
 - mariadb
 - php7_fpm
+  - vim
   - composer
   - symfony cli
-  - /var/www/html/symfsite
+  - /var/www/html/symsite
+  - estensiones php:
+    - pdo mysql
+    - zip
 
+### Despues de instalar
+```s
+# publica el sitio para cualquier origen
+php -S 0.0.0.0:8000 -t /var/www/html/symsite/public
+
+CONTAINER ID  IMAGE   COMMAND                  CREATED        STATUS         PORTS                            NAMES
+d2090f5c890f  isym    "docker-php-entrypoi…"   3 minutes ago   Up 3 minutes  9000/tcp, 0.0.0.0:80->8000/tcp   csym
+```
+![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/1024x417/d585ac679b94c50f94baf7a23db0b7c1/image.png)
 
 ### Instalación symfony
 - composer create-project symfony/skeleton myapi **para api**
-- composer create-project symfony/website-skeleton symfsite **la clasica de toda la vida**
+- composer create-project symfony/website-skeleton symsite **la clasica de toda la vida**
 - **despues de instalar symfony con composer**
 ```s
 Some files may have been created or updated to configure your new packages. 
