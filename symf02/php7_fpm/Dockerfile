@@ -18,8 +18,3 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # symfony cli: -O el contenido se guardará concatenado en un único fichero
 RUN wget https://get.symfony.com/cli/installer -O - | bash && \
     mv /root/.symfony/bin/symfony /usr/local/bin/symfony
-
-RUN mkdir /code
-# WORKDIR /var/www/html
-WORKDIR /code
-RUN composer create-project symfony/website-skeleton mysite

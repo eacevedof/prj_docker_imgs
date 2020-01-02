@@ -1,16 +1,41 @@
-## symf01
+## symf02
+
+### Este stack incluye los siguientes contenedores
+- mariadb
+- nginx
+- php7_fpm (4.9.184-linuxkit)
+  - vim
+  - composer
+  - symfony cli
+  - /var/www/html/symsite
+  - estensiones php:
+    - pdo mysql
+    - zip
+- despues de ejecutar: `docker-compose down --rmi all; docker-compose up`
+- ![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/687x236/98c518912938fc94b94947549ca83945/image.png)
+
+### Comandos de apoyo:
 ```s
-docker-compose up -d
-#
-docker-compose down --rmi all
+docker rm -f csym & docker rmi isym & docker build -t isym . & docker run -d -p 1000:8000 --rm --name csym isym
+docker exec -it csym bash
+php -S 0.0.0.0:8000 -t /var/www/html/symsite/public
+docker run -it --name csym isym bash
 ```
-# notas
-- Incluye composer en php7_fpm
+### Despues de instalar
+```s
+# publica el sitio para cualquier origen
+php -S 0.0.0.0:8000 -t /var/www/html/symsite/public
+
+CONTAINER ID  IMAGE   COMMAND                  CREATED        STATUS         PORTS                            NAMES
+d2090f5c890f  isym    "docker-php-entrypoi…"   3 minutes ago   Up 3 minutes  9000/tcp, 0.0.0.0:80->8000/tcp   csym
+```
+![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/1024x417/d585ac679b94c50f94baf7a23db0b7c1/image.png)
 
 ### Instalación symfony
 - composer create-project symfony/skeleton myapi **para api**
-- composer create-project symfony/website-skeleton mysite **la clasica de toda la vida**
+- composer create-project symfony/website-skeleton symsite **la clasica de toda la vida**
 - **despues de instalar symfony con composer**
+  - ![](https://trello-attachments.s3.amazonaws.com/5dc83c983b83fa63f035cf35/807x585/6294ee0588d7755fd2bec51046787629/image.png)
 ```s
 Some files may have been created or updated to configure your new packages. 
 Please review, edit and commit them: these files are yours. 
@@ -67,6 +92,26 @@ symfony server:start
 - Hay un bug sobre **symfony server:start**: [PHP server exited unexpectedly: exit status 78](https://github.com/symfony/cli/issues/183)
 
 ### Errores
+- mariadb y volumenes
+  ```s
+  ERROR: for cmari02  Cannot start service dbmaria:
+  error while creating mount source path '/host_mnt/e/projects/prj_docker_imgs/symf02/db_volume/initdb': 
+  mkdir /host_mnt/e: file exists
+  ```
+  - He habilitado control total a "todos" a la carpeta symf02
+  - He reiniciado docker
+- entrypoint
+  ```s
+  docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: 
+  starting container process caused 
+  "exec: \"php -S 0.0.0.0:8000 -t /var/www/html/symsite/public\": 
+  stat php -S 0.0.0.0:8000 -t /var/www/html/symsite/public: no such file or directory": unknown.  
+  ```
+  - voy a probar con entrypoint.sh. Con esto funciona!!
+  ```s
+  #!/bin/bash
+  php -S 0.0.0.0:8000 -t /var/www/html/symsite/public
+  ```
 - Al instalar con composer symfony
   ```s
   Installing psr/container (1.0.0): Cloning b7ce3b1764 from cache 
@@ -76,4 +121,3 @@ symfony server:start
   ```
   - solucion:
   - Habia que instalar **libzip-dev** y ejecutar **docker-php-ext-install zip**
-  
