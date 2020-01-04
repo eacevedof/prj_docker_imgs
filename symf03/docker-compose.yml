@@ -26,12 +26,13 @@ services:
     container_name: cphp03
     hostname: hphp03
     volumes:
-      - ./php7_fpm/entrypoint.sh:/var/www/html/entrypoint.sh
+      # - ./php7_fpm/entrypoint.sh:/var/www/html/entrypoint.sh
+      # - ./php7_fpm/:/home/user/entrypoint
       - ./test/www:/var/www/html
     networks:
       - net
     entrypoint: 
-      - /var/www/html/entrypoint.sh
+      - /home/user/bash_scripts/entrypoint.sh
     
   # nginx:
   #   build: ./nginx/
