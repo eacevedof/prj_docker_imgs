@@ -40,7 +40,8 @@ services:
       - "3000:80"
     volumes:
       - ${FOLDER_WWW}:/var/www/html
-      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/symfony.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/symfony.conf:/etc/nginx/conf.d/default.conf
     networks:
       - net
 
