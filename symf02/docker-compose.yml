@@ -2,24 +2,24 @@
 version: "3"
 
 services:
-  # dbmaria:
-  #   build: ./mariadb/
-  #   container_name: cmari02
-  #   hostname: hmari02
+  dbmaria:
+    build: ./mariadb/
+    container_name: cmari02
+    hostname: hmari02
 
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: 1234
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
 
-  #   volumes:
-  #     - ./db_volume/initdb:/docker-entrypoint-initdb.d/
-  #     - ./db_volume/mysql:/var/lib/mysql
+    volumes:
+      - ./db_volume/initdb:/docker-entrypoint-initdb.d/
+      - ./db_volume/mysql:/var/lib/mysql
     
-  #   ports:
-  #     - "3306:3306"      
-  #   networks:
-  #     - net
-  #   command:
-  #     'mysqld --innodb-flush-method=fsync'
+    ports:
+      - "3306:3306"      
+    networks:
+      - net
+    command:
+      'mysqld --innodb-flush-method=fsync'
 
   php:
     build: ./php7_fpm/
