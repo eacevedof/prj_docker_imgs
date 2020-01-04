@@ -25,10 +25,10 @@ services:
     build: ./php7_fpm/
     container_name: cphp03
     hostname: hphp03
+    env_file: .env
     volumes:
-      # - ./php7_fpm/entrypoint.sh:/var/www/html/entrypoint.sh
-      # - ./php7_fpm/:/home/user/entrypoint
-      - ./test/www:/var/www/html
+      # - ./test/www:/var/www/html
+      - ${FOLDER_WWW}:/var/www/html
     networks:
       - net
     entrypoint: 
