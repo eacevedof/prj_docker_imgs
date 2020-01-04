@@ -19,6 +19,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN wget https://get.symfony.com/cli/installer -O - | bash && \
     mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
-# no sirve de nada y no entiendo pq, borro el fichero
-# COPY ../www/html/entrypoint.sh /var/www/html
-# COPY ./entrypoint.sh /var/www/html/entrypoint.sh
+#COPY ./entrypoint.sh /var/www/html/
