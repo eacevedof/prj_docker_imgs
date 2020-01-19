@@ -18,3 +18,5 @@
         --network symf03_net \
         --name cyog yantis/sqlyog >/dev/null
   ```
+  - ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1022x85/f5f3e1f611a1a538e86dc254951080b3/image.png)
+  - ![](https://trello-attachments.s3.amazonaws.com/5e0520ef68ff3a22a9ce167b/1178x473/3fef1b05c6ceccbd52ea4324435e315a/image.png)
