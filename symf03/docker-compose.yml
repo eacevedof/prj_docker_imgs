@@ -17,7 +17,10 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - net
+      net:
+        ipv4_address:
+          172.19.0.2
+
     command:
       'mysqld --innodb-flush-method=fsync'
 
@@ -28,7 +31,9 @@ services:
     volumes:
       - ${FOLDER_WWW}:/var/www/html
     networks:
-      - net
+      net:
+        ipv4_address:
+          172.19.0.3
     entrypoint: 
       - /home/user/bash_scripts/entrypoint.sh
     
@@ -42,7 +47,9 @@ services:
       - ${FOLDER_WWW}:/var/www/html
       - ./nginx/symfony.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - net
+      net:
+        ipv4_address:
+          172.19.0.4
 
 networks:
   net:
