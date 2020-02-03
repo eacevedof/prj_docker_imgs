@@ -1,5 +1,6 @@
 # symf03
-version: "3"
+# docker-compose up --build 
+version: "3.3"
 
 services:
   dbmaria:
@@ -52,5 +53,7 @@ services:
           172.19.0.4
 
 networks:
-  net:
-    driver: bridge
+    net:
+      ipam:
+        config:
+          - subnet: 172.19.0.0/24
