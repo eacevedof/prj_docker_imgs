@@ -1,5 +1,5 @@
 # maria-univ
-# docker-compose up --build 
+# docker-compose up
 # creará una imagen: 
 version: "3.3"
 

@@ -14,7 +14,9 @@
 - comprobar configuración final:
   docker-compose config
 
-- modificar fichero env según tus configuraciones deseadas:
+- renombrar fichero .env.example a .env
+
+- modificar fichero .env según tus configuraciones deseadas:
   usuario, contraseña, rutadb (por algún motivo no le gusta la contra: root)
 
 - <ruta-a-mi-carpeta-mariadb-univ>/docker-compose up
