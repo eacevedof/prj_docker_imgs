@@ -7,6 +7,9 @@
   - Revisa el readme.md
 
 ### Indice de grupos de servicios
+- [**mariadb-univ**](https://github.com/eacevedof/prj_docker_imgs/tree/master/mariadb-univ)
+  - Centraliza la persistencia en un solo servicio. Pensado para un entorno local de desarrollo
+  
 - [**symf01**](https://github.com/eacevedof/prj_docker_imgs/tree/master/symf01#este-stack-incluye-los-siguientes-contenedores)
   - Contenedor Php FPM *FastCGI Process Manager*
     - Aqui se sirve el sitio con `php -S 0.0.0.0:8000 -t /var/www/html/symsite/public`
