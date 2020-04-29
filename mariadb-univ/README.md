@@ -21,3 +21,13 @@
 
 - <ruta-a-mi-carpeta-mariadb-univ>/docker-compose up
 ```
+- Ejemplo de bash: **mariadb.sh**
+```
+#!/bin/sh
+
+cmd='
+docker-compose --env-file=<ruta-fichero-.env> -f <ruta-fichero-docker-compose.yml> up 
+'
+eval $cmd
+```
+- `bash mariadb.sh`
