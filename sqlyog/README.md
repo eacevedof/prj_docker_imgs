@@ -1,10 +1,13 @@
 ### [Dockerhub - Yantis Sqlyog](https://hub.docker.com/r/yantis/sqlyog/)
 - Fuente. [Ejecutar wine en mac](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/)
   - `open -a XQuartz`
+  - Esto arranca el sevidor xhost que es el que usa la grafica de la maquina fisica para renderizar las apps
 - **pasos**
 - 1. definir la variable $IP
   - `IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')`
-- 2. ejecutar el contenedor:
+- 2. Permitir el acceso desde mi maquina local
+  - `/opt/X11/bin/xhost + $IP`
+- 3. ejecutar el contenedor:
   ```js
   docker run \
         -d \
@@ -34,3 +37,16 @@
 ### Errores:
 - (5-5-2020) Estoy intentando lanzar yog con esta config y no se ejecuta. El contenedor levanta pero x11 no emula windows
   - He probado lanzar el proceso con sudo y tampoco.
+  - compruebo el error: `docker logs cyog --tail 10`
+  ```
+  Application tried to create a window, but no driver could be loaded.
+  Make sure that your X server is running and that $DISPLAY is set correctly.
+  ```
+  - Pruebo: [`export DISPLAY=:0`](https://stackoverflow.com/questions/52553112/make-sure-that-your-x-server-is-running-and-that-display-is-set-correctly)
+    - **nada :S**
+  - Pruebo: `Xvfb -pixdepths 3 27 -fbdir /var/tmp`
+    - **nada**
+  - Pruebo: `xhost +si:localuser:$(whoami) >/dev/null`
+    - **no se si esto ha servido**
+  - Pruebo: `/opt/X11/bin/xhost + $IP`
+    - **OK** Arranca :)
