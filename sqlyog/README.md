@@ -33,3 +33,4 @@
 
 ### Errores:
 - (5-5-2020) Estoy intentando lanzar yog con esta config y no se ejecuta. El contenedor levanta pero x11 no emula windows
+  - He probado lanzar el proceso con sudo y tampoco.
