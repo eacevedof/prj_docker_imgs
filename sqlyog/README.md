@@ -50,3 +50,4 @@
     - **no se si esto ha servido**
   - Pruebo: `/opt/X11/bin/xhost + $IP`
     - **OK** Arranca :)
+  
