@@ -10,3 +10,6 @@ logs:
 
 ssh:
 	docker exec -it --user root cont-mariadb-univ bash
+
+inspect:
+	docker inspect cont-mariadb-univ
