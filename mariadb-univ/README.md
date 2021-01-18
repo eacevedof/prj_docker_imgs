@@ -48,3 +48,5 @@ eval $cmd
   - En ese mapeo ya contaba con datos de otra version de mariadb que era incompatible con la "latest"
   - Basta con mover este contenido a una carpeta temporal y volver a lanzar el build
   - despues se copia solo las carpetas (con las bd)
+  - **Obsoleto**
+    - Esto antes funcionaba, ahora no reconoce las tablas, solo la bd
