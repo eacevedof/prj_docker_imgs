@@ -9,4 +9,4 @@ logs:
 	docker logs cont-mariadb-univ
 
 ssh:
-	docker
+	docker exec -it --user root cont-mariadb-univ bash
