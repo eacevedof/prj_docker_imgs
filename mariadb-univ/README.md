@@ -31,3 +31,20 @@ docker-compose --env-file=<ruta-fichero-.env> -f <ruta-fichero-docker-compose.ym
 eval $cmd
 ```
 - `bash mariadb.sh`
+
+### Errores:
+```
+2021-01-18 20:14:09 0 [ERROR] InnoDB: Upgrade after a crash is not supported. The redo log was created with MariaDB 10.4.11.
+2021-01-18 20:14:09 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+2021-01-18 20:14:09 0 [Note] InnoDB: Starting shutdown...
+2021-01-18 20:14:10 0 [ERROR] Plugin 'InnoDB' init function returned error.
+2021-01-18 20:14:10 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2021-01-18 20:14:10 0 [Note] Plugin 'FEEDBACK' is disabled.
+2021-01-18 20:14:10 0 [ERROR] Unknown/unsupported storage engine: InnoDB
+2021-01-18 20:14:10 0 [ERROR] Aborting
+```
+- solución:
+  - Esto se daba por la siguiente linea: ![](https://trello-attachments.s3.amazonaws.com/5f677b93028240833060b3f5/571x76/106384c886287391cc2b9a683e0bd6aa/image.png)
+  - En ese mapeo ya contaba con datos de otra version de mariadb que era incompatible con la "latest"
+  - Basta con mover este contenido a una carpeta temporal y volver a lanzar el build
+  - despues se copia solo las carpetas (con las bd)
