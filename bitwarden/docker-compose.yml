@@ -1,13 +1,13 @@
 version: "3.9"
 
 services:
-  python38:
+  ubuntu1804:
     container_name: cont-ubuntu1804
     hostname: ubuntu1804
     
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./Dockerfile
     
     volumes:
       - ./data:/app/data
