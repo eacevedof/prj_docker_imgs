@@ -1,5 +1,5 @@
 #!/bin/bash
 curl -Lso bitwarden.sh https://go.btwrdn.co/bw-sh \
-    && chmod +x bitwarden.sh
+    && chmod +x /app/bash/bitwarden.sh
     
-./bitwarden.sh install
+/app/bash/bitwarden.sh install
