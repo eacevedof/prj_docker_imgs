@@ -13,4 +13,4 @@ services:
       - ./data:/app/data
       - ./bash:/app/bash
 
-    #entrypoint: /app/bash/entrypoint.sh
+    entrypoint: /usr/src/entrypoint.sh
