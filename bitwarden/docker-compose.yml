@@ -11,5 +11,6 @@ services:
     
     volumes:
       - ./data:/app/data
+      - ./bash:/app/bash
 
-    entrypoint: ./app/entrypoint.sh
+    entrypoint: /app/bash/entrypoint.sh
