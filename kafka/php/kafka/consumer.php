@@ -8,7 +8,7 @@ $conf = new RdKafka\Conf();
 $conf->set("group.id", "consumer-group-1");
 
 $rk = new RdKafka\Consumer($conf);
-$rk->addBrokers("127.0.0.1");
+$rk->addBrokers(KAFKA_SERVER);
 
 $topicConf = new RdKafka\TopicConf();
 $topicConf->set("auto.commit.interval.ms", 100);
