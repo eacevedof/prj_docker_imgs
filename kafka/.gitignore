@@ -2,3 +2,4 @@
 .vscode
 .env.local
 docker/kafka/data/*
+!docker/kafka/data/.gitkeep
