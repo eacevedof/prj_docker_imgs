@@ -1,9 +1,9 @@
 <?php
 $consumer = new \RdKafka\Consumer();
 $consumer->setLogLevel(LOG_DEBUG);
-$consumer->addBrokers("kafka:9092");
+$consumer->addBrokers(KAFKA_SERVER.":".KAFKA_PORT);
 
-$topic = $consumer->newTopic("test");
+$topic = $consumer->newTopic(KAFKA_TOPIC);
 
 $topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
 
