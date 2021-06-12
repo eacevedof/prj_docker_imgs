@@ -10,14 +10,19 @@ services:
     volumes:
     - ./docker/zookeeper/zoo.cfg:/conf/zoo.cfg
 
-    ports:
-      - 2181:2181
+    #ports:
+      #- 2181:2181
 
     networks:
       - zookeeper-net
       - mariadb-univ_net
 
   kafka:
+    depends_on:
+      - zookeeper
+    environment:
+      ZOOKEEPER_IP: zookeeper
+
     hostname: kafka
     container_name: cont-kafka
     build:
@@ -28,9 +33,9 @@ services:
     - ./docker/kafka/data:/data
     - ./docker/kafka/logs:/logs
 
-    ports:
-      - 9092:9092 #broker
-      - 7203:7203 #publishing
+    #ports:
+      #- 9092:9092 #broker
+      #- 7203:7203 #publishing
 
     networks:
       - zookeeper-net
