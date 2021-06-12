@@ -16,7 +16,7 @@ elseif($action==="c")
 }
 else
 {
-    include_once("kafka/consumer.php");
+    include_once("kafka/consumer-2.php");
 }
 
 echo sprintf("%s:%s -> topic: %s",KAFKA_SERVER,KAFKA_PORT,KAFKA_TOPIC);
