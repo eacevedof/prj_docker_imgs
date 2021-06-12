@@ -2,7 +2,7 @@
 unset JMX_PORT
 
 # crea el topid
-kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
+kafka-topics.sh --create --topic test --replication-factor 1 --partitions 3 --zookeeper cont-zookeeper:2181
 
 Created topic "test".
 

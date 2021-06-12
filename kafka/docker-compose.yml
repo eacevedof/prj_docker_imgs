@@ -29,6 +29,7 @@ services:
 
     # opcional, se verían todos los brokers y particiones (carpetas)
     #volumes:
+    # - ./docker/kafka/config:/kafka/config (peta)
     #- ./docker/kafka/data:/data
     #- ./docker/kafka/logs:/logs
 

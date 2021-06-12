@@ -3,7 +3,7 @@ echo "=============\n";
 echo " consumer-3.php ($KAFKA_SOCKET)\n";
 echo "=============\n";
 
-
+//https://www.programmersought.com/article/1490128927/
 $conf = new RdKafka\Conf();
 $conf->setDrMsgCb(function ($kafka, $message) {
     file_put_contents("./c_dr_cb.log", var_export($message, true), FILE_APPEND);
