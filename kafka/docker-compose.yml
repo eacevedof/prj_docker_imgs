@@ -7,9 +7,13 @@ services:
     build:
       context: docker/kafka
     command: tail -f /dev/null
+    volumes:
+    - ./docker/kafka/zoo.cfg:/conf/zoo.cfg
+
     networks:
       - kafka-net
       - mariadb-univ_net
+
 
 networks:
   kafka-net:

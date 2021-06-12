@@ -5,6 +5,9 @@ help: ## Show this help message
 	@echo "targets:"
 	@egrep "^(.+)\:\ ##\ (.+)" ${MAKEFILE_LIST} | column -t -c 2 -s ":#"
 
+destroy: ## destroy all container
+	docker-compose -f docker-compose.yml down
+
 rebuild: ## rebuild containers
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml --env-file ./docker/.env up -d --build --remove-orphans
@@ -29,4 +32,4 @@ logs-kafka: ## Logs kafka
 	docker logs cont-kafka
 
 ssh-kafka: ## ssh's into kafka
-	docker exec -it --user root cont-kafka /bin/sh
+	docker exec -it --user root cont-kafka /bin/bash
