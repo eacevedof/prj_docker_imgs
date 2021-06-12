@@ -6,7 +6,7 @@ services:
     container_name: cont-zookeeper
     build:
       context: docker/zookeeper
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
     volumes:
     - ./docker/zookeeper/zoo.cfg:/conf/zoo.cfg
 
@@ -27,7 +27,7 @@ services:
     container_name: cont-kafka
     build:
       context: docker/kafka
-    command: tail -f /dev/null
+    #command: tail -f /dev/null
 
     volumes:
     - ./docker/kafka/data:/data
