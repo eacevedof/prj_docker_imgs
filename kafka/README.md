@@ -1,4 +1,6 @@
 ```
+unset JMX_PORT
+
 # crea el topid
 kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
 
@@ -9,12 +11,18 @@ kafka-console-producer.sh --topic test --broker-list cont-kafka:9092
 
 kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-kafka:9092
 
+# BORRAR mensajes
+tocar kafka/config/server.properties delete.topic.enable=true
+kafka-topics.sh --zookeeper cont-zookeeper:2181 --alter --topic test --config retention.ms=1000
 
+kafka-topics.sh --zookeeper cont-zookeeper:2181 --delete --topic test
 
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use
 hay que suar unset JMX_PORT
 
+# kafka restart
+kafka-server-start.sh config/server.properties
 
 [2021-06-12 12:20:52,934] WARN Session 0x0 for server null, unexpected error, closing socket connection and attempting reconnect (org.apache.zookeeper.ClientCnxn)
 java.net.ConnectException: Connection refused

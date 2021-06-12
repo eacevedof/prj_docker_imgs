@@ -24,7 +24,7 @@ $topicConf->set("offset.store.method", "broker");
 // "earliest": start from the beginning
 $topicConf->set("auto.offset.reset", "earliest");
 
-$topic = $rk->newTopic("test", $topicConf);
+$topic = $rk->newTopic(KAFKA_TOPIC, $topicConf);
 
 // Start consuming partition 0
 $topic->consumeStart(0, RD_KAFKA_OFFSET_STORED);

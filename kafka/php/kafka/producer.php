@@ -10,7 +10,7 @@ $conf->set("metadata.broker.list", $KAFKA_SOCKET);
 
 $producer = new RdKafka\Producer($conf);
 
-$topic = $producer->newTopic("test");
+$topic = $producer->newTopic(KAFKA_TOPIC);
 
 for ($i = 0; $i < 10; $i++) {
     $message = uniqid()." - message";
