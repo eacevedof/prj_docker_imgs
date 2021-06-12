@@ -13,9 +13,11 @@ kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-
 
 # BORRAR mensajes
 tocar kafka/config/server.properties delete.topic.enable=true
-kafka-topics.sh --zookeeper cont-zookeeper:2181 --alter --topic test --config retention.ms=1000
+kafka-topics.sh --zookeeper cont-zookeeper:2181 --alter --topic test --config retention.ms=60000
 
 kafka-topics.sh --zookeeper cont-zookeeper:2181 --delete --topic test
+
+
 
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use

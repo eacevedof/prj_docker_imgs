@@ -12,11 +12,14 @@ $conf->setErrorCb(function ($kafka, $err, $reason) {
     file_put_contents("./err_cb.log", sprintf("Kafka error: %s (reason: %s)", rd_kafka_err2str($err), $reason) . PHP_EOL, FILE_APPEND);
 });
 
+//$conf->set("bootstrap.servers", $KAFKA_SOCKET);
+//$conf->set("debug","all");
+
 //Set the consumer group
-$conf->set("group.id", "consumer-3");
+$conf->set("group.id", "test-consumer-group");
 
 $rk = new RdKafka\Consumer($conf);
-$rk->addBrokers("127.0.0.1");
+$rk->addBrokers(KAFKA_SERVER);
 
 $topicConf = new RdKafka\TopicConf();
 $topicConf->set("request.required.acks", 1);
@@ -35,7 +38,7 @@ $topicConf->set("auto.commit.interval.ms", 100);
  //largest: Simple to understand that starting from the latest, it is equivalent to the latest above.
 //$topicConf->set("auto.offset.reset", "smallest");
 
-$topic = $rk->newTopic("test", $topicConf);
+$topic = $rk->newTopic(KAFKA_TOPIC, $topicConf);
 
  // parameter 1 consumption partition 0
  // RD_KAFKA_OFFSET_BEGINNING start over consumption
@@ -49,6 +52,7 @@ while (true) {
     //    parameter 1 indicates the consumption partition, here is the partition 0
     // parameter 2 indicates how long the synchronization is blocked
     $message = $topic->consume(0, 12 * 1000);
+    print_r($message);
     if (is_null($message)) {
         sleep(1);
         echo "No more messages\n";
@@ -56,6 +60,7 @@ while (true) {
     }
     switch ($message->err) {
         case RD_KAFKA_RESP_ERR_NO_ERROR:
+            echo "RD_KAFKA_RESP_ERR_NO_ERROR\n";
             var_dump($message);
             break;
         case RD_KAFKA_RESP_ERR__PARTITION_EOF:
