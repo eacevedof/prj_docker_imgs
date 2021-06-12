@@ -1,6 +1,6 @@
 <?php
 echo "=============\n";
-echo " producer.php\n";
+echo " producer.php ($KAFKA_SOCKET)\n";
 echo "=============\n";
 $conf = new RdKafka\Conf();
 $conf->set("metadata.broker.list", $KAFKA_SOCKET);
@@ -21,6 +21,7 @@ for ($i = 0; $i < 10; $i++) {
 for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
     $result = $producer->flush(10000);
     if (RD_KAFKA_RESP_ERR_NO_ERROR === $result) {
+        echo "Error: $result";
         break;
     }
 }
@@ -28,5 +29,3 @@ for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
 if (RD_KAFKA_RESP_ERR_NO_ERROR !== $result) {
     throw new \RuntimeException("Was unable to flush, messages might be lost!");
 }
-
-?>

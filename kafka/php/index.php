@@ -6,10 +6,16 @@ const KAFKA_TOPIC = "test";
 $KAFKA_SOCKET = sprintf("%s:%s",KAFKA_SERVER,KAFKA_PORT);
 
 $action = $_GET["action"] ?? "";
-if ($action==="p") {
+if ($action==="p")
+{
     include_once("kafka/producer.php");
 }
-elseif($action==="c") {
+elseif($action==="c")
+{
+    include_once("kafka/consumer.php");
+}
+else
+{
     include_once("kafka/consumer.php");
 }
 
