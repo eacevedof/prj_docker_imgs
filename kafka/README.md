@@ -8,12 +8,6 @@ kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 this is my 
 
 kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-kafka:9092
 
-
-
-kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server kafka:9092
-
-kafka-console-producer.sh --topic test --broker-list kafka:9092 some-message
-
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use
 hay que suar unset JMX_PORT
@@ -26,6 +20,8 @@ java.net.ConnectException: Connection refused
         at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:361)
         at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1141)
 
-./ZOOKEEPER_HOME/bin/zkServer.sh restart
-/zookeeper-3.4.14/bin# zkServer.sh restart
+./ZOOKEEPER_HOME/bin/zkServer.sh restart nada
+/zookeeper-3.4.14/bin# zkServer.sh restart nada
+
+no hay que mapear zoo.cfg vacio (nada no func)
 ```
