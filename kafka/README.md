@@ -33,4 +33,8 @@ Error while executing topic command : replication factor: 1 larger than availabl
  (kafka.admin.TopicCommand$)
 
 
+no se si han sido los permisos o el cmd en docker-compose pero ahora funciona:
+Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
+        java.net.BindException: Address already in use 
+eso si, he tenido que aplicar unset JMX_PORT
 ```
