@@ -37,4 +37,8 @@ no se si han sido los permisos o el cmd en docker-compose pero ahora funciona:
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use 
 eso si, he tenido que aplicar unset JMX_PORT
+.. parece que si han tenido que ver los permisos
+
+git filter-branch --force --index-filter 'git rm -fr --cached --ignore-unmatch kafka/docker/kafka/data' --prune-empty --tag-name-filter cat -- --all
+git push origin --force --all
 ```
