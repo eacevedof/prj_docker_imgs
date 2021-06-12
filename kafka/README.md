@@ -24,4 +24,13 @@ java.net.ConnectException: Connection refused
 /zookeeper-3.4.14/bin# zkServer.sh restart nada
 
 no hay que mapear zoo.cfg vacio (nada no func)
+hay que reiniciar zookeeper /zookeeper-3.4.14# bin/zkServer.sh restart (esto func)
+
+Nuevo error:
+root@kafka:/kafka# kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
+Error while executing topic command : replication factor: 1 larger than available brokers: 0
+[2021-06-12 12:51:11,884] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: replication factor: 1 larger than available brokers: 0
+ (kafka.admin.TopicCommand$)
+
+
 ```

@@ -7,8 +7,8 @@ services:
     build:
       context: docker/zookeeper
     command: tail -f /dev/null
-    #volumes:
-    #- ./docker/zookeeper/zoo.cfg:/conf/zoo.cfg
+    volumes:
+    - ./docker/zookeeper/zoo.cfg:/conf/zoo.cfg
 
     #ports:
       #- 2181:2181
