@@ -1,7 +1,8 @@
 <?php
-define("KAFKA_SERVER","localhost");
-define("KAFKA_PORT","9092");
-define("KAFKA_TOPIC","test");
+const KAFKA_SERVER = "127.0.0.1";
+const KAFKA_PORT = "9092";
+const KAFKA_TOPIC = "test";
+
 
 $action = $_GET["action"] ?? "";
 if ($action==="p") {

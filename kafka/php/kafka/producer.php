@@ -1,6 +1,8 @@
 <?php
-$producer = new \RdKafka\Producer();
-$producer->setLogLevel(LOG_DEBUG);
+use \RdKafka\Producer;
+
+$producer = new Producer();
+//$producer->setLogLevel(LOG_DEBUG);
 
 if ($producer->addBrokers(KAFKA_SERVER.":".KAFKA_PORT) < 1) {
     echo "Failed adding brokers\n";
@@ -14,6 +16,6 @@ if (!$producer->getMetadata(false, $topic, 2000)) {
     exit;
 }
 
-$topic->produce(RD_KAFKA_PARTITION_UA, 0, $_SERVER['QUERY_STRING']);
+$topic->produce(RD_KAFKA_PARTITION_UA, 0, $_SERVER["QUERY_STRING"]);
 
 echo "Message published\n";
