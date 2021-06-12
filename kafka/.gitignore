@@ -3,3 +3,6 @@
 .env.local
 docker/kafka/data/*
 !docker/kafka/data/.gitkeep
+docker/kafka/logs/*
+!docker/kafka/logs/.gitkeep
+php/vendor

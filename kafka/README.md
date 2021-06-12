@@ -1,12 +1,15 @@
 ```
+# crea el topid
 kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
 
 Created topic "test".
 
 # In separate terminals:
-kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 this is my message 
+kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 
 
 kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-kafka:9092
+
+
 
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use
@@ -37,8 +40,38 @@ no se si han sido los permisos o el cmd en docker-compose pero ahora funciona:
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use 
 eso si, he tenido que aplicar unset JMX_PORT
-.. parece que si han tenido que ver los permisos
+.. parece que si han tenido que ver los permisos y el cmd pq se caia el contenedor de kafka al no conectar con zookeeper
 
 git filter-branch --force --index-filter 'git rm -fr --cached --ignore-unmatch kafka/docker/kafka/data' --prune-empty --tag-name-filter cat -- --all
 git push origin --force --all
 ```
+
+### PHP
+- pecl install rdkafka
+    - instala la extensión **.so** en:
+    ``` 
+    /private/tmp/pear/temp/pear-build-<some-random>/install-rdkafka-5.0.0/usr/local/Cellar/php/8.0.7/pecl/20200930/rdkafka.so
+    ```
+- Habilitar en **php.ini** `php -i | grep php.ini`
+    - `/usr/local/etc/php/8.0/php.ini`  
+    - extension="rdkafka.so"
+- Si se ha instalado correctamente podriamos ejecutar este código:
+```php
+<?php
+$consumer = new \RdKafka\Consumer();
+var_dump($consumer);
+```
+
+### Python
+- [brew install librdkafka](https://formulae.brew.sh/formula/librdkafka)
+    - Equivalente a:
+    - https://github.com/Phillaf/php-kafka-demo/blob/master/docker/php/Dockerfile
+    ```sys
+    RUN git clone --depth 1 --branch v0.9.5 https://github.com/edenhill/librdkafka.git \
+    && ( \
+        cd librdkafka \
+        && ./configure \
+        && make \
+        && make install \
+    ) \
+    ```
