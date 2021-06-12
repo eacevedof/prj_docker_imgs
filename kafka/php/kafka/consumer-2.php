@@ -4,10 +4,17 @@ echo " consumer-2.php ($KAFKA_SOCKET)\n";
 echo "=============\n";
 
 $conf = new RdKafka\Conf();
+
+/* no tira
+$conf->setLogCb(function ($kafka, $level, $facility, $message) {
+    echo printf("Kafka %s: %s (level: %d)\n", $facility, $message, $level);
+});
+*/
+
 $conf->set("bootstrap.servers", $KAFKA_SOCKET);
 
 $consumer = new RdKafka\Consumer($conf);
-$consumer->setLogLevel(LOG_DEBUG);
+//$consumer->setLogLevel(LOG_DEBUG);
 $consumer->addBrokers($KAFKA_SOCKET);
 
 $topic = $consumer->newTopic(KAFKA_TOPIC);
@@ -15,7 +22,10 @@ $topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
 
 while (true) {
     $msg = $topic->consume(0, 1000);
-    print_r($msg);
+    if($msg) {
+        echo "message: \n";
+        print_r($msg);
+    }
 }
 
 /*

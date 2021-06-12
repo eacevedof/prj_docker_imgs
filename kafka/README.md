@@ -69,6 +69,7 @@ git push origin --force --all
 $consumer = new \RdKafka\Consumer();
 var_dump($consumer);
 ```
+- [Docu](https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html)
 
 ### Python
 - [brew install librdkafka](https://formulae.brew.sh/formula/librdkafka)
