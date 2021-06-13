@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 LOCALHOST="127.0.0.1"
 # LOCALHOST="192.168.1.128"
 PORT="9092"
-PORT="9094"
+#PORT="9094"
 
 consumer = KafkaConsumer(
     "test",

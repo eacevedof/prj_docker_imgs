@@ -29,7 +29,7 @@ services:
 
 
     ports:
-      - 9094:9094
+      - 9092:9092
 
     volumes:
       - ./docker/kafka/config:/opt/kafka/config

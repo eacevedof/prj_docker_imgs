@@ -11,6 +11,7 @@ destroy: ## destroy all container
 rebuild: ## rebuild containers
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml --env-file ./docker/.env up -d --build --remove-orphans
+	make ps
 
 build-zookeeper:
 	docker-compose --env-file ./docker/.env up -d --no-deps --force-recreate --build kafka_zookeeper_1
@@ -50,4 +51,5 @@ net: ## network details
 	docker network inspect kafka_zookeeper-net
 
 ps: ## docker ps
+	clear
 	docker ps | grep kafka
