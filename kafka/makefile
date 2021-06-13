@@ -48,3 +48,6 @@ ssh-kafka: ## ssh's into kafka
 
 net: ## network details
 	docker network inspect kafka_zookeeper-net
+
+ps: ## docker ps
+	docker ps | grep kafka

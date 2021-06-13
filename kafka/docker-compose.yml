@@ -17,16 +17,19 @@ services:
       - mariadb-univ_net
 
   kafka:
+    # ches/kafka
     depends_on:
       - zookeeper
     hostname: kafka
     container_name: cont-kafka
 
     environment:
+      EAF: YML
       ZOOKEEPER_IP: cont-zookeeper
-      # NADA
-      #ADVERTISED_HOST: cont-kafka
-      #ADVERTISED_PORT: 9092
+      #KAFKA_ADVERTISED_HOST_NAME: ${DOCKERHOST}
+      #KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      #KAFKA_ADVERTISED_PORT: "9002"
+      #NADA
 
     build:
       context: docker/kafka

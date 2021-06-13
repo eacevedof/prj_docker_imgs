@@ -1,7 +1,8 @@
 from kafka import KafkaConsumer
 from json import loads
 import logging
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 LOCALHOST="127.0.0.1"
 PORT="9092"
@@ -14,6 +15,7 @@ consumer = KafkaConsumer(
      #group_id="test-consumer-group",
      group_id=None,
      fetch_max_wait_ms=0,
+     # consumer_timeout_ms=10000,
      value_deserializer=lambda x: loads(x.decode("utf-8"))
 )
 

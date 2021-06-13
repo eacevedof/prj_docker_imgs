@@ -57,7 +57,7 @@ git filter-branch --force --index-filter 'git rm -fr --cached --ignore-unmatch k
 git push origin --force --all
 
 
-python ERROR:kafka.conn:Connect attempt to <BrokerConnection node_id=0 host= :9092 returned error 60. disconnecting
+python KafkaConsumer ERROR:kafka.conn:Connect attempt to <BrokerConnection node_id=0 host= :9092 returned error 60. disconnecting
 ```
 
 ### PHP
