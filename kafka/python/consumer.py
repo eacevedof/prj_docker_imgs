@@ -3,9 +3,12 @@ from json import loads
 import logging
 logging.basicConfig(level=logging.INFO)
 
+LOCALHOST="127.0.0.1"
+PORT="9092"
+
 consumer = KafkaConsumer(
     "test",
-     bootstrap_servers=["localhost:9092"],
+     bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
      auto_offset_reset="earliest",
      #enable_auto_commit=True,
      #group_id="test-consumer-group",

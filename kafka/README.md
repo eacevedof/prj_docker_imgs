@@ -7,7 +7,7 @@ kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zo
 Created topic "test".
 
 # PRODUCER
-kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 
+unset JMX_PORT; kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 
 
 # CONSUMER
 kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-kafka:9092
@@ -55,6 +55,9 @@ eso si, he tenido que aplicar unset JMX_PORT
 
 git filter-branch --force --index-filter 'git rm -fr --cached --ignore-unmatch kafka/docker/kafka/data' --prune-empty --tag-name-filter cat -- --all
 git push origin --force --all
+
+
+python ERROR:kafka.conn:Connect attempt to <BrokerConnection node_id=0 host= :9092 returned error 60. disconnecting
 ```
 
 ### PHP

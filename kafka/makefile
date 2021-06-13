@@ -45,3 +45,6 @@ ssh-zookeeper: ## ssh's into zookeeper
 
 ssh-kafka: ## ssh's into kafka
 	docker exec -it --user root cont-kafka /bin/bash
+
+net: ## network details
+	docker network inspect kafka_zookeeper-net
