@@ -13,10 +13,10 @@ rebuild: ## rebuild containers
 	docker-compose -f docker-compose.yml --env-file ./docker/.env up -d --build --remove-orphans
 
 build-zookeeper:
-	docker-compose --env-file ./docker/.env up -d --no-deps --force-recreate --build cont-zookeeper
+	docker-compose --env-file ./docker/.env up -d --no-deps --force-recreate --build kafka_zookeeper_1
 
 build-kafka:
-	docker-compose --env-file ./docker/.env up -d --no-deps --force-recreate --build cont-kafka
+	docker-compose --env-file ./docker/.env up -d --no-deps --force-recreate --build kafka_kafka_1
 
 start: ## start
 	docker-compose start
@@ -26,25 +26,25 @@ restart: ## restart the containers
 	docker-compose start
 
 restart-kafka:
-	docker restart cont-kafka
+	docker restart kafka_kafka_1
 
 restart-zookeeper:
-	docker restart cont-zookeeper
+	docker restart kafka_zookeeper_1
 
 stop: ## stop containers
 	docker-compose stop
 
 logs-kafka: ## Logs kafka
-	docker logs cont-kafka
+	docker logs kafka_kafka_1
 
 logs-zookeeper: ## Logs zookeeper
-	docker logs cont-zookeeper
+	docker logs kafka_zookeeper_1
 
 ssh-zookeeper: ## ssh's into zookeeper
-	docker exec -it --user root cont-zookeeper /bin/bash
+	docker exec -it --user root kafka_zookeeper_1 /bin/bash
 
 ssh-kafka: ## ssh's into kafka
-	docker exec -it --user root cont-kafka /bin/bash
+	docker exec -it --user root kafka_kafka_1 /bin/bash
 
 net: ## network details
 	docker network inspect kafka_zookeeper-net
