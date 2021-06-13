@@ -5,18 +5,20 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 LOCALHOST="127.0.0.1"
+LOCALHOST="192.168.1.128"
 PORT="9092"
 
 consumer = KafkaConsumer(
     "test",
      bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
-     auto_offset_reset="earliest",
+     # auto_offset_reset="earliest",
      #enable_auto_commit=True,
      #group_id="test-consumer-group",
-     group_id=None,
-     fetch_max_wait_ms=0,
+     # group_id=None,
+     # fetch_max_wait_ms=0,
      # consumer_timeout_ms=10000,
-     value_deserializer=lambda x: loads(x.decode("utf-8"))
+     # value_deserializer=lambda x: loads(x.decode("utf-8"))
+    api_version=(0,10,2)
 )
 
 print("consumer.py\n")
