@@ -86,3 +86,5 @@ var_dump($consumer);
         && make install \
     ) \
     ```
+### Kafka
+- https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
