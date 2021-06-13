@@ -7,7 +7,7 @@ kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zo
 Created topic "test".
 
 # PRODUCER
-kafka-console-producer.sh --topic test --broker-list kafka_kafka_1:9092
+kafka-console-producer.sh --topic test --broker-list kafka_kafka_1:9094
 
 # CONSUMER
 kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server kafka_kafka_1:9092
