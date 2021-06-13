@@ -2,21 +2,21 @@
 unset JMX_PORT
 
 # crea el topid
-kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
+kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper kafka_zookeeper_1:2181
 
 Created topic "test".
 
 # PRODUCER
-unset JMX_PORT; kafka-console-producer.sh --topic test --broker-list cont-kafka:9092 
+kafka-console-producer.sh --topic test --broker-list kafka_kafka_1:9092
 
 # CONSUMER
-kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server cont-kafka:9092
+kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server kafka_kafka_1:9092
 
 # BORRAR mensajes
 tocar kafka/config/server.properties delete.topic.enable=true
-kafka-topics.sh --zookeeper cont-zookeeper:2181 --alter --topic test --config retention.ms=60000
+kafka-topics.sh --zookeeper kafka_zookeeper_1:2181 --alter --topic test --config retention.ms=60000
 
-kafka-topics.sh --zookeeper cont-zookeeper:2181 --delete --topic test
+kafka-topics.sh --zookeeper kafka_zookeeper_1:2181 --delete --topic test
 
 
 
@@ -41,7 +41,7 @@ no hay que mapear zoo.cfg vacio (nada no func)
 hay que reiniciar zookeeper /zookeeper-3.4.14# bin/zkServer.sh restart (esto func)
 
 Nuevo error:
-root@kafka:/kafka# kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper cont-zookeeper:2181
+root@kafka:/kafka# kafka-topics.sh --create --topic test --replication-factor 1 --partitions 1 --zookeeper kafka_zookeeper_1:2181
 Error while executing topic command : replication factor: 1 larger than available brokers: 0
 [2021-06-12 12:51:11,884] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: replication factor: 1 larger than available brokers: 0
  (kafka.admin.TopicCommand$)

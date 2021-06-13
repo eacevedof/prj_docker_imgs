@@ -3,7 +3,7 @@ version: "3.5"
 services:
   zookeeper:
     image: wurstmeister/zookeeper
-    hostname: zookeeper
+    #hostname: zookeeper
     #container_name: cont-zookeeper (no le gusta)
 
     ports:
@@ -14,7 +14,7 @@ services:
       - mariadb-univ_net
 
   kafka:
-    image: wurstmeister/kafka
+    image: wurstmeister/kafka:latest
     depends_on:
       - zookeeper
     #hostname: kafka
@@ -22,14 +22,18 @@ services:
 
     environment:
       DOCKER_API_VERSION: 1.22
-      KAFKA_ADVERTISED_HOST_NAME: 192.168.99.100
-      KAFKA_CREATE_TOPICS: "test:1:1"
+      HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:9094
+      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9094
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
 
     ports:
-      - 9092:9092
+      - 9094:9094
 
     volumes:
+      - ./docker/kafka/config:/opt/kafka/config
       - /var/run/docker.sock:/var/run/docker.sock
 
     networks:
