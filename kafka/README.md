@@ -92,3 +92,5 @@ var_dump($consumer);
     ```
 ### Kafka
 - https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
+- Croquis conectividad:
+    - https://github.com/wurstmeister/kafka-docker/wiki/Connectivity

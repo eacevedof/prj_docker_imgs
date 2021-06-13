@@ -23,7 +23,7 @@ services:
     environment:
       DOCKER_API_VERSION: 1.22
       #HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
-      KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.1.128
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
