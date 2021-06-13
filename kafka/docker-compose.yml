@@ -32,7 +32,7 @@ services:
       - 9092:9092
 
     volumes:
-      - ./docker/kafka/config:/opt/kafka/config
+      # - ./docker/kafka/config:/opt/kafka/config así no tira, tengo una copia pero el resto de archivos no se crean
       - /var/run/docker.sock:/var/run/docker.sock
 
     networks:

@@ -18,12 +18,11 @@ consumer = KafkaConsumer(
      # group_id=None,
      # fetch_max_wait_ms=0,
      # consumer_timeout_ms=10000,
-     value_deserializer=lambda x: loads(x.decode("utf-8"))
+     # value_deserializer=lambda x: loads(x.decode("utf-8"))
 )
 
 print("consumer.py\n")
 for message in consumer:
-    print("message:\n")
     message = message.value
     #collection.insert_one(message)
     print("{} added to {}".format(message))
