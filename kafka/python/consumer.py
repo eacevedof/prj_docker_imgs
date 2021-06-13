@@ -23,6 +23,6 @@ consumer = KafkaConsumer(
 
 print("consumer.py\n")
 for message in consumer:
-    message = message.value
+    message = message.value.decode("utf-8")
     #collection.insert_one(message)
-    print("{} added to {}".format(message))
+    print("message received: {}".format(message))
