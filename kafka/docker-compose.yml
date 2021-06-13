@@ -23,11 +23,14 @@ services:
     environment:
       DOCKER_API_VERSION: 1.22
       #HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
+      # aqui tengo que obtener la ip de mi host
       KAFKA_ADVERTISED_HOST_NAME: 192.168.1.128
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 1
+      CONFIG: /opt/kafka/config
       # KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
-
+      # PORT_COMMAND: "docker port $(hostname) 9092/tcp | cut -d: -f2"
     ports:
       - 9092:9092
 
