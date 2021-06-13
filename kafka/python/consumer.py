@@ -5,7 +5,7 @@ logging.basicConfig(level=logging.INFO)
 
 consumer = KafkaConsumer(
     "test",
-     bootstrap_servers=["0.0.0.0:9092"],
+     bootstrap_servers=["localhost:9092"],
      auto_offset_reset="earliest",
      #enable_auto_commit=True,
      #group_id="test-consumer-group",
