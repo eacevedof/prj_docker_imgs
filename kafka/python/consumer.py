@@ -10,7 +10,7 @@ consumer = KafkaConsumer(
     "test",
      bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
      auto_offset_reset="earliest",
-     fetch_min_bytes=10
+     fetch_min_bytes=100
      # enable_auto_commit=True,
      # group_id="test-consumer-group",
      # group_id=None,
