@@ -14,7 +14,8 @@ services:
       - mariadb-univ_net
 
   kafka:
-    image: wurstmeister/kafka:latest
+    build:
+      context: docker/kafka
     depends_on:
       - zookeeper
     #hostname: kafka
@@ -24,10 +25,10 @@ services:
       DOCKER_API_VERSION: 1.22
       #HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
       # aqui tengo que obtener la ip de mi host
-      KAFKA_ADVERTISED_HOST_NAME: 192.168.1.128
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_HOST_NAME: ${IP_HOSTMACHINE}
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_BROKER_ID: 1
       CONFIG: /opt/kafka/config
       # KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       # PORT_COMMAND: "docker port $(hostname) 9092/tcp | cut -d: -f2"
@@ -35,7 +36,7 @@ services:
       - 9092:9092
 
     volumes:
-      # - ./docker/kafka/config:/opt/kafka/config así no tira, tengo una copia pero el resto de archivos no se crean
+      - ./docker/kafka/bash:/root/bash
       - /var/run/docker.sock:/var/run/docker.sock
 
     networks:
