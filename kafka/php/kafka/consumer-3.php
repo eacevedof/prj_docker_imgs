@@ -1,4 +1,5 @@
 <?php
+include_once("config.php");
 echo "=============\n";
 echo " consumer-3.php ($KAFKA_SOCKET)\n";
 echo "=============\n";

@@ -33,7 +33,7 @@ while (true) {
     $message = $topic->consume(0, 120*10000);
     switch ($message->err) {
         case RD_KAFKA_RESP_ERR_NO_ERROR:
-            var_dump($message);
+            var_dump($message->payload);
             break;
         case RD_KAFKA_RESP_ERR__PARTITION_EOF:
             echo "No more messages; will wait for more\n";
