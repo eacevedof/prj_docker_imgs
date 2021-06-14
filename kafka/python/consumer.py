@@ -8,9 +8,10 @@ PORT="9092"
 
 consumer = KafkaConsumer(
     "test",
-     bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
-     auto_offset_reset="earliest",
-     fetch_min_bytes=100
+    bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
+    auto_offset_reset="earliest",
+    fetch_min_bytes=100,
+    fetch_max_wait_ms=60000, # 1 min si la carga del mensaje no llega 100 bytes
      # enable_auto_commit=True,
      # group_id="test-consumer-group",
      # group_id=None,
