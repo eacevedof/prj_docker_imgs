@@ -1,17 +1,20 @@
 from kafka import KafkaConsumer
 import logging
-logging.basicConfig(level=logging.INFO)
-#logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 LOCALHOST="127.0.0.1"
 PORT="9092"
+SOCKET="{}:{}".format(LOCALHOST,PORT)
 
 consumer = KafkaConsumer(
     "test",
-    bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
+    #bootstrap_servers=[f"{LOCALHOST}:{PORT}"],
+    bootstrap_servers=[SOCKET],
     auto_offset_reset="earliest",
     fetch_min_bytes=100,
     fetch_max_wait_ms=60000, # 1 min si la carga del mensaje no llega 100 bytes
+    request_timeout_ms=70000,
      # enable_auto_commit=True,
      # group_id="test-consumer-group",
      # group_id=None,
@@ -22,5 +25,6 @@ consumer = KafkaConsumer(
 
 print("consumer.py\n")
 for message in consumer:
-    message = message.value.decode("utf-8")
+
+    message = message.value.encode("utf-8")
     print("message received: {}".format(message))

@@ -53,3 +53,15 @@ net: ## network details
 ps: ## docker ps
 	clear
 	docker ps | grep kafka
+
+consumer-php: ## consumer php
+	php php/index.php c
+
+producer-php: ## producer php
+	php php/index.php p
+
+consumer-py: ## consumer python
+	python python/consumer.py
+
+producer-py: ## producer python
+	python python/producer.py
