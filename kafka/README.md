@@ -1,3 +1,9 @@
+### Kafka docs
+- https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html
+- https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
+- Croquis conectividad:
+    - https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
+
 ```
 unset JMX_PORT
 
@@ -90,7 +96,3 @@ var_dump($consumer);
         && make install \
     ) \
     ```
-### Kafka
-- https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
-- Croquis conectividad:
-    - https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
