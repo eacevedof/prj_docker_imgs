@@ -9,7 +9,7 @@ $conf->set("metadata.broker.list", $KAFKA_SOCKET);
 $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
 
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 30; $i++) {
     $now = date("Y-m-d H:i:s");
     $message = "Message example:".uniqid()." - message ($now)";
     $message = utf8_encode($message);
@@ -20,6 +20,7 @@ for ($i = 0; $i < 10; $i++) {
     //$producer->poll(0);
 }
 
+/*
 for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
     $result = $producer->flush(10000);
     if (RD_KAFKA_RESP_ERR_NO_ERROR === $result) {
@@ -31,3 +32,5 @@ for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
 if (RD_KAFKA_RESP_ERR_NO_ERROR !== $result) {
     throw new \RuntimeException("Was unable to flush, messages might be lost!");
 }
+*/
+
