@@ -1,5 +1,6 @@
 ### Kafka docs
-- https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html
+- python - https://kafka-python.readthedocs.io/en/master/apidoc/modules.html
+- php - https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html
 - https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
 - Croquis conectividad:
     - https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
