@@ -80,6 +80,10 @@ Traceback (most recent call last):
 pip uninstall kafka
 pip install kafka-python
 
+===
+importError: cannot import name 'KafkaConsumer' from 'kafka' (unknown location)
+hay que definir 
+PYTHONPATH=/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages
 ```
 
 ### PHP
