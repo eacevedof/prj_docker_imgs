@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat $KAFKACONFIG/server.properties
+cat $PATHKAFKACONFIG/server.properties
