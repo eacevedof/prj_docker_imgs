@@ -11,7 +11,7 @@ $topic = $producer->newTopic(KAFKA_TOPIC);
 
 for ($i = 0; $i < 30; $i++) {
     $now = date("Y-m-d H:i:s");
-    $message[] = "Message example:".uniqid()." - message ($now)";
+    $message = "Message example:".uniqid()." - message ($now)";
     $message = utf8_encode($message);
     $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);
     echo $message."\n";
