@@ -5,6 +5,8 @@ services:
     image: wurstmeister/zookeeper
     #hostname: zookeeper
     #container_name: cont-zookeeper (no le gusta)
+    environment:
+      TZ: Europe/Madrid
 
     ports:
       - 2181:2181
@@ -22,6 +24,7 @@ services:
     #container_name: cont-kafka
 
     environment:
+      TZ: Europe/Madrid
       DOCKER_API_VERSION: 1.22
       #HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
       # aqui tengo que obtener la ip de mi host

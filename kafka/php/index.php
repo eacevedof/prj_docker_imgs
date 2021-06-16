@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("Europe/Madrid");
 $action = $_GET["action"] ?? "";
 if(!$action) {
     $action = $argv[1];

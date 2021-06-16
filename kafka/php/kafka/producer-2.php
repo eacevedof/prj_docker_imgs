@@ -10,9 +10,10 @@ $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
 
 for ($i = 0; $i < 30; $i++) {
-    $now = date("Y-m-d H:i:s");
+    //$now = date("Y-m-d H:i:s");
+    $now = date("H:i:s");
     $message = [];
-    $message["message"] = "Message example:".uniqid()." - message ($now)";
+    $message["message"] = "Message $i, example:".uniqid()." - message ($now)";
     $message = json_encode($message);
     $message = utf8_encode($message);
     $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);

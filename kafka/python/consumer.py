@@ -27,7 +27,7 @@ consumer = KafkaConsumer(
 
 print("consumer.py\n")
 for consumer_record in consumer:
-    pprint(consumer_record)
+    #pprint(consumer_record)
     message = str(consumer_record.value.decode("utf-8"))
     print(message)
     #print("message received: {}".format(message))

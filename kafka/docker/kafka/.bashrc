@@ -10,3 +10,10 @@ alias enable-delete="$PATHBASH/enable-delete.sh"
 
 # directorios
 alias kafkaconfig="cd $PATHKAFKACONFIG"
+
+function describe_topic_config {
+    topic_name="$1"
+    ./bin/kafka-configs.sh --describe --all \
+      --bootstrap-server=0.0.0.0:9092 \
+      --topic ${topic_name}
+}

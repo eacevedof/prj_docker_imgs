@@ -29,14 +29,14 @@ $topicConf->set("request.required.acks", 1);
 $topicConf->set("auto.commit.enable", 0);
 $topicConf->set("auto.commit.interval.ms", 100);
 
- // Set the offset storage to file
+// Set the offset storage to file
 //$topicConf->set("offset.store.method", "file");
 // Set the offset store as a broker
  $topicConf->set("offset.store.method", "broker");
 //$topicConf->set("offset.store.path", __DIR__);
 
- //smallest: simply understood as starting from scratch, in fact equivalent to the above earliest
- //largest: Simple to understand that starting from the latest, it is equivalent to the latest above.
+//smallest: simply understood as starting from scratch, in fact equivalent to the above earliest
+//largest: Simple to understand that starting from the latest, it is equivalent to the latest above.
 //$topicConf->set("auto.offset.reset", "smallest");
 
 $topic = $rk->newTopic(KAFKA_TOPIC, $topicConf);
@@ -46,32 +46,33 @@ $topic = $rk->newTopic(KAFKA_TOPIC, $topicConf);
  // RD_KAFKA_OFFSET_STORED The last consumed offset record begins to consume
  // RD_KAFKA_OFFSET_END Last consumption
 $topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
-//$topic->consumeStart(0, RD_KAFKA_OFFSET_END); //
 //$topic->consumeStart(0, RD_KAFKA_OFFSET_STORED);
+//$topic->consumeStart(0, RD_KAFKA_OFFSET_END);
 
 while (true) {
-    //    parameter 1 indicates the consumption partition, here is the partition 0
+    // parameter 1 indicates the consumption partition, here is the partition 0
     // parameter 2 indicates how long the synchronization is blocked
-    $message = $topic->consume(0, 12 * 1000);
-    print_r($message);
+    $message = $topic->consume(0, 12 * 1000);//espera 12 seg para volver a pedir
+
     if (is_null($message)) {
         sleep(1);
-        echo "No more messages\n";
+        echo "No more messages: ".date("H:i:s")."\n";
         continue;
     }
+
     switch ($message->err) {
         case RD_KAFKA_RESP_ERR_NO_ERROR:
             echo "RD_KAFKA_RESP_ERR_NO_ERROR\n";
-            var_dump($message);
-            break;
+            print_r($message);
+        break;
         case RD_KAFKA_RESP_ERR__PARTITION_EOF:
             echo "No more messages; will wait for more\n";
-            break;
+        break;
         case RD_KAFKA_RESP_ERR__TIMED_OUT:
             echo "Timed out\n";
-            break;
+        break;
         default:
             throw new \Exception($message->errstr(), $message->err);
-            break;
+        break;
     }
 }
