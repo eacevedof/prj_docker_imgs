@@ -10,9 +10,14 @@ $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
 
 for ($i = 0; $i < 10; $i++) {
-    $message = uniqid()." - message";
-    $topic->produce(RD_KAFKA_PARTITION_UA, 0, "example: {$message}");
-    $producer->poll(0);
+    $now = date("Y-m-d H:i:s");
+    $message = "Message example:".uniqid()." - message ($now)";
+    $message = utf8_encode($message);
+    $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);
+    echo $message."\n";
+    sleep(5);
+    //recupera 0 mensajes
+    //$producer->poll(0);
 }
 
 for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {

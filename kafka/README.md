@@ -24,8 +24,6 @@ kafka-topics.sh --zookeeper kafka_zookeeper_1:2181 --alter --topic test --config
 
 kafka-topics.sh --zookeeper kafka_zookeeper_1:2181 --delete --topic test
 
-
-
 Error: Exception thrown by the agent : java.rmi.server.ExportException: Port already in use: 7203; nested exception is: 
         java.net.BindException: Address already in use
 hay que suar unset JMX_PORT
@@ -64,6 +62,24 @@ git push origin --force --all
 
 
 python KafkaConsumer ERROR:kafka.conn:Connect attempt to <BrokerConnection node_id=0 host= :9092 returned error 60. disconnecting
+
+====
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 783, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/kafka/__init__.py", line 23, in <module>
+    from kafka.producer import KafkaProducer
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/kafka/producer/__init__.py", line 4, in <module>
+    from .simple import SimpleProducer
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/kafka/producer/simple.py", line 54
+    return '<SimpleProducer batch=%s>' % self.async
+
+pip uninstall kafka
+pip install kafka-python
+
 ```
 
 ### PHP

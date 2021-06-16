@@ -1,4 +1,6 @@
 from kafka import KafkaConsumer
+from pprint import pprint
+from json import loads
 import logging
 # logging.basicConfig(level=logging.INFO)
 logging.basicConfig(level=logging.DEBUG)
@@ -24,7 +26,7 @@ consumer = KafkaConsumer(
 )
 
 print("consumer.py\n")
-for message in consumer:
-
-    message = message.value.encode("utf-8")
-    print("message received: {}".format(message))
+for consumer_record in consumer:
+    message = consumer_record.value
+    pprint(message)
+    #print("message received: {}".format(message))
