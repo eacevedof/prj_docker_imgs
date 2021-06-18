@@ -4,23 +4,21 @@ echo "=============\n";
 echo " consumer-3.php ($KAFKA_SOCKET)\n";
 echo "=============\n";
 
+const REQUEST_SLEEP_TIME = 12*1000; //12 seg
+
 //https://www.programmersought.com/article/1490128927/
 $conf = new RdKafka\Conf();
-$conf->setDrMsgCb(function ($kafka, $message) {
-    file_put_contents("./c_dr_cb.log", var_export($message, true), FILE_APPEND);
-});
-$conf->setErrorCb(function ($kafka, $err, $reason) {
-    file_put_contents("./err_cb.log", sprintf("Kafka error: %s (reason: %s)", rd_kafka_err2str($err), $reason) . PHP_EOL, FILE_APPEND);
-});
 
-//$conf->set("bootstrap.servers", $KAFKA_SOCKET);
+
+
+$conf->set("bootstrap.servers", $KAFKA_SOCKET);
 //$conf->set("debug","all");
 
 //Set the consumer group
 $conf->set("group.id", "test-consumer-group");
 
 $rk = new RdKafka\Consumer($conf);
-$rk->addBrokers(KAFKA_SERVER);
+//$rk->addBrokers(KAFKA_SERVER);
 
 $topicConf = new RdKafka\TopicConf();
 $topicConf->set("request.required.acks", 1);
@@ -52,7 +50,7 @@ $topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
 while (true) {
     // parameter 1 indicates the consumption partition, here is the partition 0
     // parameter 2 indicates how long the synchronization is blocked
-    $message = $topic->consume(0, 12 * 1000);//espera 12 seg para volver a pedir
+    $message = $topic->consume(0, REQUEST_SLEEP_TIME);//espera 12 seg para volver a pedir
 
     if (is_null($message)) {
         sleep(1);
@@ -63,7 +61,7 @@ while (true) {
     switch ($message->err) {
         case RD_KAFKA_RESP_ERR_NO_ERROR:
             echo "RD_KAFKA_RESP_ERR_NO_ERROR\n";
-            print_r($message);
+            print_r($message->payload."\n");
         break;
         case RD_KAFKA_RESP_ERR__PARTITION_EOF:
             echo "No more messages; will wait for more\n";
