@@ -20,11 +20,9 @@ $CONFIG["callbacks"]["on_error"] = function ($kafka, $err, $reason) {
 };
 
 $conf = new RdKafka\Conf();
-$conf->set("metadata.broker.list", $KAFKA_SOCKET);
+$conf->set("metadata.broker.list", "10:45");
 $conf->setDrMsgCb($CONFIG["callbacks"]["on_success"]);
 $conf->setErrorCb($CONFIG["callbacks"]["on_error"]);
-
-
 
 $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
@@ -38,4 +36,12 @@ for ($i = 0; $i < 30; $i++) {
     $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);
     echo $message."\n";
     sleep(5);
+}
+
+for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
+    $result = $producer->flush(10000);
+    if (RD_KAFKA_RESP_ERR_NO_ERROR === $result) {
+        echo "Error: $result";
+        break;
+    }
 }
