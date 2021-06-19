@@ -3,4 +3,4 @@
 #describe_topic_config "test" | awk 'BEGIN{IFS="=";IRS=" "} /^[ ]*retention.ms/{print $1}'
 kafka-configs.sh --describe --all \
       --bootstrap-server=0.0.0.0:9092 \
-      --topic "test"
+      --topic "test" | awk 'BEGIN{IFS="=";IRS=" "} /^[ ]*retention.ms/{print $1}'

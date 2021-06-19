@@ -8,6 +8,7 @@ logging.basicConfig(level=logging.INFO)
 LOCALHOST="127.0.0.1"
 PORT="9092"
 SOCKET="{}:{}".format(LOCALHOST,PORT)
+SOCKET=f"{LOCALHOST}:{PORT}"
 
 consumer = KafkaConsumer(
     "test",
@@ -27,7 +28,7 @@ consumer = KafkaConsumer(
 
 print("consumer.py\n")
 for consumer_record in consumer:
-    #pprint(consumer_record)
+    pprint(consumer_record)
     message = str(consumer_record.value.decode("utf-8"))
     print(message)
     #print("message received: {}".format(message))

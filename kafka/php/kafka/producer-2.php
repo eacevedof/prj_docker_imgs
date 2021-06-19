@@ -34,6 +34,7 @@ for ($i = 0; $i < 30; $i++) {
     $message = json_encode($message);
     $message = utf8_encode($message);
     $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);
+    $producer->poll(0);
     echo $message."\n";
     sleep(5);
 }
@@ -44,4 +45,8 @@ for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
         echo "Error: $result";
         break;
     }
+}
+
+if (RD_KAFKA_RESP_ERR_NO_ERROR !== $result) {
+    throw new \RuntimeException("Was unable to flush, messages might be lost!");
 }
