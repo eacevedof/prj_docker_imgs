@@ -35,8 +35,8 @@ services:
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_DELETE_TOPIC_ENABLE: "true"
-      #tiempo de vida del mensaje
-      KAFKA_LOG_RETENTION_MINUTES: 1
+      #tiempo de vida del mensaje 4 horas
+      KAFKA_LOG_RETENTION_MINUTES: 320
       CONFIG: /opt/kafka/config
       # KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       # PORT_COMMAND: "docker port $(hostname) 9092/tcp | cut -d: -f2"

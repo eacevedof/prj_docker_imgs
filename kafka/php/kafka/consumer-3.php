@@ -43,9 +43,9 @@ $topic = $rk->newTopic(KAFKA_TOPIC, $topicConf);
  // RD_KAFKA_OFFSET_BEGINNING start over consumption
  // RD_KAFKA_OFFSET_STORED The last consumed offset record begins to consume
  // RD_KAFKA_OFFSET_END Last consumption
-$topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
+//$topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
 //$topic->consumeStart(0, RD_KAFKA_OFFSET_STORED);
-//$topic->consumeStart(0, RD_KAFKA_OFFSET_END);
+$topic->consumeStart(0, RD_KAFKA_OFFSET_END);
 
 $i = 0;
 while (true) {
