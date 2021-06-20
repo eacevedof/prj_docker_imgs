@@ -28,7 +28,7 @@ $conf->setErrorCb($CONFIG["callbacks"]["on_error"]);
 $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
 
-for ($i = 0; $i < 30; $i++) {
+for ($i = 0; $i < 5; $i++) {
     $now = date("H:i:s");
     $message = [];
     $message["message"] = "Message $i, example:".uniqid()." - message ($now)";
@@ -38,21 +38,27 @@ for ($i = 0; $i < 30; $i++) {
 
     //consumes a single message and returns events.
     //param: maxim time to block waiting for message por defecto infinito
-    //$producer->poll(5000);
+    //es como un sleep(5)
+    //$producer->poll(2000);
     echo $message."\n";
 }
 
-for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
+for ($flushRetries = 0; $flushRetries < 3; $flushRetries++) {
+    $now = date("H:i:s");
+    echo "flush retry: $flushRetries ($now)\n";
     //flush: wait for all messages in the Producer queue to be delivered. This is a convenience
     //param: timeout tiempo máximo de bloqueo en segundos
     //return: number of messages in queue
     $result = $producer->flush(5000);
+    print_r($result);
+    echo "\n";
+
     if (RD_KAFKA_RESP_ERR_NO_ERROR === $result) {
-        echo "Error: $result";
+        echo "Error: $result\n";
         break;
     }
 }
 
 if (RD_KAFKA_RESP_ERR_NO_ERROR !== $result) {
-    throw new \RuntimeException("Was unable to flush, messages might be lost!");
+    throw new \RuntimeException("Was unable to flush, messages might be lost!\n");
 }
