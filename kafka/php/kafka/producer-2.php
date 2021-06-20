@@ -19,8 +19,9 @@ $CONFIG["callbacks"]["on_error"] = function ($kafka, $err, $reason) {
     );
 };
 
+$FAKE_SOCKET = "10.0.0.1:45";
 $conf = new RdKafka\Conf();
-$conf->set("metadata.broker.list", "10:45");
+$conf->set("metadata.broker.list", $FAKE_SOCKET);
 $conf->setDrMsgCb($CONFIG["callbacks"]["on_success"]);
 $conf->setErrorCb($CONFIG["callbacks"]["on_error"]);
 
@@ -34,13 +35,18 @@ for ($i = 0; $i < 30; $i++) {
     $message = json_encode($message);
     $message = utf8_encode($message);
     $topic->produce(RD_KAFKA_PARTITION_UA, 0, $message);
-    $producer->poll(0);
+
+    //consumes a single message and returns events.
+    //param: maxim time to block waiting for message por defecto infinito
+    //$producer->poll(5000);
     echo $message."\n";
-    sleep(5);
 }
 
 for ($flushRetries = 0; $flushRetries < 10; $flushRetries++) {
-    $result = $producer->flush(10000);
+    //flush: wait for all messages in the Producer queue to be delivered. This is a convenience
+    //param: timeout tiempo máximo de bloqueo en segundos
+    //return: number of messages in queue
+    $result = $producer->flush(5000);
     if (RD_KAFKA_RESP_ERR_NO_ERROR === $result) {
         echo "Error: $result";
         break;
