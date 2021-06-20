@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat $PATHKAFKACONFIG/server.properties
+more $PATHKAFKACONFIG/server.properties

@@ -2,6 +2,7 @@ export PATHBASH="$HOME/bash"
 export PATHKAFKACONFIG="/opt/kafka/config"
 export PATH=$PATH:$PATHBASH
 
+alias show-version="$PATHBASH/version.sh"
 alias consumer-test="$PATHBASH/consumer.sh"
 alias producer-test="$PATHBASH/producer.sh"
 alias show-config="$PATHBASH/show_config.sh"

@@ -21,14 +21,14 @@ $CONFIG["callbacks"]["on_error"] = function ($kafka, $err, $reason) {
 
 //$FAKE_SOCKET = "10.0.0.1:45";
 $conf = new RdKafka\Conf();
-$conf->set("metadata.broker.list", $KAFKA_SOCKET);
+$conf->set("metadata.broker.list", $KAFKA_SOCKET."0");
 $conf->setDrMsgCb($CONFIG["callbacks"]["on_success"]);
 $conf->setErrorCb($CONFIG["callbacks"]["on_error"]);
 
 $producer = new RdKafka\Producer($conf);
 $topic = $producer->newTopic(KAFKA_TOPIC);
 
-for ($i = 0; $i < 5; $i++) {
+for ($i = 0; $i < 7; $i++) {
     $now = date("H:i:s");
     $message = [];
     $message["message"] = "Message $i, example:".uniqid()." - message ($now)";
