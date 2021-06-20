@@ -17,6 +17,7 @@ services:
       - mariadb-univ_net
 
   kafka:
+    #version: 2.13-2.7.0
     build:
       context: docker/kafka
     depends_on:
