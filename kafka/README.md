@@ -1,10 +1,56 @@
+### Pruebas realizadas con:
+- Zookeeper (zookeeper-3.4.13)
+- Kafka (kafka_2.13-2.7.0)
+
 ### Kafka docs
-- python - https://kafka-python.readthedocs.io/en/master/apidoc/modules.html
-- php - https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html
-- https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
+- Documentación de kafka para python
+    - Está muy bien estructurada y entra en detalle de parámetros y lo que retorna cada método 
+    - https://kafka-python.readthedocs.io/en/master/apidoc/modules.html
+    
+- Documentación de kafka para php. Un poco pobre, pero no he encontrado otra. En caso de no encontrar la información concereta se puede ver en la de python
+    - https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html
+    
+- Fuente de comandos con ejemplos. Por ejemplo delete_topics
+    - https://jaceklaskowski.gitbooks.io/apache-kafka/content/kafka-topic-deletion.html
+    
 - Croquis conectividad:
     - https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
+    
+- Explicación con ejemplos de bitami/kafka. Se aclaran los parámetros y como se tratan los grupos de consumidores.
+    - https://medium.com/@sirajul.anik/apache-kafka-understanding-how-to-produce-and-consume-messages-9744c612f40f 
 
+### PHP
+- pecl install rdkafka
+    - instala la extensión **.so** en:
+    ``` 
+    /private/tmp/pear/temp/pear-build-<some-random>/install-rdkafka-5.0.0/usr/local/Cellar/php/8.0.7/pecl/20200930/rdkafka.so
+    ```
+- Habilitar en **php.ini** `php -i | grep php.ini`
+    - `/usr/local/etc/php/8.0/php.ini`  
+    - extension="rdkafka.so"
+- Si se ha instalado correctamente podriamos ejecutar este código:
+```php
+<?php
+$consumer = new \RdKafka\Consumer();
+var_dump($consumer);
+```
+- [Docu](https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html)
+
+### Python
+- [brew install librdkafka](https://formulae.brew.sh/formula/librdkafka)
+    - Equivalente a:
+    - https://github.com/Phillaf/php-kafka-demo/blob/master/docker/php/Dockerfile
+    ```sys
+    RUN git clone --depth 1 --branch v0.9.5 https://github.com/edenhill/librdkafka.git \
+    && ( \
+        cd librdkafka \
+        && ./configure \
+        && make \
+        && make install \
+    ) \
+    ```
+
+### Notas 
 ```
 unset JMX_PORT
 
@@ -86,34 +132,3 @@ importError: cannot import name 'KafkaConsumer' from 'kafka' (unknown location)
 hay que definir 
 PYTHONPATH=/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages
 ```
-
-### PHP
-- pecl install rdkafka
-    - instala la extensión **.so** en:
-    ``` 
-    /private/tmp/pear/temp/pear-build-<some-random>/install-rdkafka-5.0.0/usr/local/Cellar/php/8.0.7/pecl/20200930/rdkafka.so
-    ```
-- Habilitar en **php.ini** `php -i | grep php.ini`
-    - `/usr/local/etc/php/8.0/php.ini`  
-    - extension="rdkafka.so"
-- Si se ha instalado correctamente podriamos ejecutar este código:
-```php
-<?php
-$consumer = new \RdKafka\Consumer();
-var_dump($consumer);
-```
-- [Docu](https://arnaud.le-blanc.net/php-rdkafka-doc/phpdoc/book.rdkafka.html)
-
-### Python
-- [brew install librdkafka](https://formulae.brew.sh/formula/librdkafka)
-    - Equivalente a:
-    - https://github.com/Phillaf/php-kafka-demo/blob/master/docker/php/Dockerfile
-    ```sys
-    RUN git clone --depth 1 --branch v0.9.5 https://github.com/edenhill/librdkafka.git \
-    && ( \
-        cd librdkafka \
-        && ./configure \
-        && make \
-        && make install \
-    ) \
-    ```

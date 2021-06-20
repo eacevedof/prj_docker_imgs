@@ -2,6 +2,7 @@ version: "3.5"
 
 services:
   zookeeper:
+    # version: 3.4.13
     image: wurstmeister/zookeeper
     #hostname: zookeeper
     #container_name: cont-zookeeper (no le gusta)
@@ -43,7 +44,7 @@ services:
 
     volumes:
       - ./docker/kafka/bash:/root/bash
-      #- /var/run/docker.sock:/var/run/docker.sock
+      #- /var/run/docker.sock:/var/run/docker.sock (en el ejemplo se configura pero no se para que)
 
     networks:
       - zookeeper-net
