@@ -25,7 +25,7 @@ services:
 
     environment:
       TZ: Europe/Madrid
-      DOCKER_API_VERSION: 1.22
+      # DOCKER_API_VERSION: 1.22
       #HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
       # aqui tengo que obtener la ip de mi host
       KAFKA_BROKER_ID: 1

@@ -60,5 +60,5 @@ for ($flushRetries = 0; $flushRetries < 3; $flushRetries++) {
 }
 
 if (RD_KAFKA_RESP_ERR_NO_ERROR !== $result) {
-    throw new \RuntimeException("Was unable to flush, messages might be lost!\n");
+    throw new \RuntimeException("Producer was unable to flush. Messages might be lost!\n");
 }

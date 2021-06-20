@@ -5,6 +5,9 @@ help: ## Show this help message
 	@echo "targets:"
 	@egrep "^(.+)\:\ ##\ (.+)" ${MAKEFILE_LIST} | column -t -c 2 -s ":#"
 
+ip:
+	ipconfig getifaddr en0
+
 destroy: ## destroy all container
 	docker-compose -f docker-compose.yml down
 
@@ -21,10 +24,12 @@ build-kafka:
 
 start: ## start
 	docker-compose start
+	docker ps | grep kafka
 
 restart: ## restart the containers
 	docker-compose stop
 	docker-compose start
+	docker ps | grep kafka
 
 restart-kafka:
 	docker restart kafka_kafka_1
