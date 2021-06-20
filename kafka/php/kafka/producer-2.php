@@ -21,7 +21,7 @@ $CONFIG["callbacks"]["on_error"] = function ($kafka, $err, $reason) {
 
 //$FAKE_SOCKET = "10.0.0.1:45";
 $conf = new RdKafka\Conf();
-$conf->set("metadata.broker.list", $KAFKA_SOCKET."0");
+$conf->set("metadata.broker.list", $KAFKA_SOCKET);
 $conf->setDrMsgCb($CONFIG["callbacks"]["on_success"]);
 $conf->setErrorCb($CONFIG["callbacks"]["on_error"]);
 

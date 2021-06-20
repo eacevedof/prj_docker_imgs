@@ -47,7 +47,9 @@ $topic->consumeStart(0, RD_KAFKA_OFFSET_BEGINNING);
 //$topic->consumeStart(0, RD_KAFKA_OFFSET_STORED);
 //$topic->consumeStart(0, RD_KAFKA_OFFSET_END);
 
+$i = 0;
 while (true) {
+    echo "start $i \n";
     // parameter 1 indicates the consumption partition, here is the partition 0
     // parameter 2 indicates how long the synchronization is blocked
     $message = $topic->consume(0, REQUEST_SLEEP_TIME);//espera 12 seg para volver a pedir
@@ -73,4 +75,6 @@ while (true) {
             throw new \Exception($message->errstr(), $message->err);
         break;
     }
+    $i++;
+    echo "end $i\n";
 }

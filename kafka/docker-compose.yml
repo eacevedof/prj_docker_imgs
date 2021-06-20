@@ -43,7 +43,7 @@ services:
 
     volumes:
       - ./docker/kafka/bash:/root/bash
-      - /var/run/docker.sock:/var/run/docker.sock
+      #- /var/run/docker.sock:/var/run/docker.sock
 
     networks:
       - zookeeper-net
