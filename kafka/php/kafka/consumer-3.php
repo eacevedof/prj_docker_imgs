@@ -8,9 +8,6 @@ const REQUEST_SLEEP_TIME = 12*1000; //12 seg
 
 //https://www.programmersought.com/article/1490128927/
 $conf = new RdKafka\Conf();
-
-
-
 $conf->set("bootstrap.servers", $KAFKA_SOCKET);
 //$conf->set("debug","all");
 
