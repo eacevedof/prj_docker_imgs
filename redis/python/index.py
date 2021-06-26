@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 load_dotenv("../.env")
 os.environ["TZ"] = os.getenv("TIME_ZONE")
 
-
 action = sys.argv[1] if 1<len(sys.argv) else ""
 
 filename = get_filename(action)
