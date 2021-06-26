@@ -13,7 +13,7 @@ def run():
     """
     print(pr)
     objredis = get_redis().Redis(host=os.getenv("REDIS_SERVER"), port=os.getenv("REDIS_PORT"), db=0)
-    for i in range(0,5):
+    for i in range(0,99):
         struuid = uuid.uuid1()
         key = f"id-{i}"
         ttl = i + 50
@@ -21,5 +21,6 @@ def run():
         strnow = now.strftime("%Y-%m-%d %H:%M:%S")
         enddate = (now + timedelta(seconds=ttl)).strftime("%H:%M:%S")
         value = f"some python value in string {strnow} - {enddate}"
+        print(f"${key}:${value}")
         objredis.set(key, value)
         objredis.expire(key, ttl)
