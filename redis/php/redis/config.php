@@ -6,7 +6,7 @@ function console_loadenv(string $pathenv): void
     $envcontent = explode(PHP_EOL, $envcontent);
     foreach ($envcontent as $env)
     {
-        if($env[0] === "#" || trim($env)==="") continue;
+        if(substr($env, 0, 1) === "#" || trim($env)==="") continue;
         $parts = explode("=",$env);
         $key = trim($parts[0]);
         array_shift($parts);
@@ -21,7 +21,7 @@ function console_loadenv(string $pathenv): void
 
 function get_filename(?string $arg="c"): string
 {
-    if(is_null($arg)) return "";
+    if(!$arg) $arg = "";
     switch ($arg)
     {
         case "":
@@ -29,6 +29,7 @@ function get_filename(?string $arg="c"): string
             return "consumer.php";
 
         case "p":
+            return "producer.php";
     }
     return "";
 }
