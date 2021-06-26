@@ -20,7 +20,7 @@ build-zookeeper:
 	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build redis_zookeeper_1
 
 build-redis:
-	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build redis_redis_1
+	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build cont-redis
 
 start: ## start
 	docker-compose start
@@ -32,16 +32,16 @@ restart: ## restart the containers
 	docker ps | grep redis
 
 restart-redis:
-	docker restart redis_redis_1
+	docker restart cont-redis
 
 stop: ## stop containers
 	docker-compose stop
 
 logs-redis: ## Logs redis
-	docker logs redis_redis_1
+	docker logs cont-redis
 
 ssh-redis: ## ssh's into redis
-	docker exec -it --user root redis_redis_1 /bin/bash
+	docker exec -it --user root cont-redis /bin/bash
 
 net: ## network details
 	docker network inspect redis_zookeeper-net
