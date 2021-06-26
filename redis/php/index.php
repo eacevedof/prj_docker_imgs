@@ -1,7 +1,14 @@
 <?php
 include("redis/config.php");
+$pathenv = realpath(__DIR__."/../.env");
+console_loadenv($pathenv);
 date_default_timezone_set(getenv("TIME_ZONE"));
-$redis = new Redis();
-$redis->connect(getenv("REDIS_SERVER"),getenv("REDIS_PORT"));
-$array = $redis->lRange("some-key",0,-1);
-print_r($array);
+
+$action = $_GET["action"] ?? "";
+if(!$action) {
+    $action = $argv[1];
+}
+$filename = get_filename($action);
+$path = "redis/$filename";
+include_once($path);
+

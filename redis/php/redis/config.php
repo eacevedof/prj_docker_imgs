@@ -19,5 +19,16 @@ function console_loadenv(string $pathenv): void
     }
 }
 
-$pathenv = realpath(__DIR__."/../../.env");
-console_loadenv($pathenv);
+function get_filename(?string $arg="c"): string
+{
+    if(is_null($arg)) return "";
+    switch ($arg)
+    {
+        case "":
+        case "c":
+            return "consumer.php";
+
+        case "p":
+    }
+    return "";
+}
