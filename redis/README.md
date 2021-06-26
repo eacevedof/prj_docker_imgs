@@ -49,4 +49,11 @@ ERROR: `/private/tmp/pear/temp/redis/configure --with-php-config=/usr/local/opt/
 
 pecl install igbinary
 
+#2 
+impor redis
+
+ERROR: redis no tiene el atributo .Redis
+
+habia conflicto del paquete instalado redis y mi paquete local redis. Importaba el local
+he tenido que cargar de forma manual con importlib 
 ```

@@ -1,5 +1,6 @@
 .idea
 .vscode
+*.pyc
 
 docker/redis/bash/*.rdb
 php/vendor
