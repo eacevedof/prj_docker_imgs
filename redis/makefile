@@ -17,7 +17,7 @@ rebuild: ## rebuild containers
 	make ps
 
 build-redis:
-	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build cont-redis
+	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build cont-redisdemo
 
 start: ## start
 	docker-compose start
@@ -29,16 +29,16 @@ restart: ## restart the containers
 	docker ps | grep redis
 
 restart-redis:
-	docker restart cont-redis
+	docker restart cont-redisdemo
 
 stop: ## stop containers
 	docker-compose stop
 
 logs-redis: ## Logs redis
-	docker logs cont-redis
+	docker logs cont-redisdemo
 
 ssh-redis: ## ssh's into redis
-	docker exec -it --user root cont-redis /bin/bash
+	docker exec -it --user root cont-redisdemo /bin/bash
 
 net: ## network details
 	docker network inspect redis-net

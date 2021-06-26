@@ -2,12 +2,18 @@ version: "3.5"
 
 services:
   redis:
-    image: redis
-    hostname: redis
-    container_name: cont-redis
+    # image: redis
+    build:
+      context: docker/redis
+    hostname: redisdemo
+    container_name: cont-redisdemo
     environment:
       TZ: ${TIME_ZONE}
       #REDIS_URL: ${REDIS_URL}
+
+    volumes:
+      - ./docker/redis/bash:/root/bash
+
     ports:
       - ${REDIS_PORT}:6379
 
