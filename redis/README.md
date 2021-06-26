@@ -52,7 +52,7 @@ pecl install igbinary
 #2 
 impor redis
 
-ERROR: redis no tiene el atributo .Redis
+ERROR: AttributeError: module 'redis' has no attribute 'Redis'
 
 habia conflicto del paquete instalado redis y mi paquete local redis. Importaba el local
 he tenido que cargar de forma manual con importlib 

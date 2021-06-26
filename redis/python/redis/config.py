@@ -13,6 +13,8 @@ def get_filename(arg: str = "c") -> str:
 def get_redis():
     import os
     import importlib.machinery
+    #import redis
+    #return redis
     #PYTHONPATH=/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages
     #path_redis_init="/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/redis/__init__.py"
     path_redis_init = os.getenv("PYTHONPATH") + "/redis/__init__.py"
