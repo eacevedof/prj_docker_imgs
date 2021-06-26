@@ -1,0 +1,8 @@
+.idea
+.vscode
+.env.local
+docker/redis/data/*
+!docker/redis/data/.gitkeep
+docker/redis/logs/*
+!docker/redis/logs/.gitkeep
+php/vendor
