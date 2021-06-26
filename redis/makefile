@@ -16,9 +16,6 @@ rebuild: ## rebuild containers
 	docker-compose -f docker-compose.yml --env-file ./.env up -d --build --remove-orphans
 	make ps
 
-build-zookeeper:
-	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build redis_zookeeper_1
-
 build-redis:
 	docker-compose --env-file ./.env up -d --no-deps --force-recreate --build cont-redis
 
@@ -44,7 +41,7 @@ ssh-redis: ## ssh's into redis
 	docker exec -it --user root cont-redis /bin/bash
 
 net: ## network details
-	docker network inspect redis_zookeeper-net
+	docker network inspect redis-net
 
 ps: ## docker ps
 	clear

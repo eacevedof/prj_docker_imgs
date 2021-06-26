@@ -7,7 +7,7 @@ services:
     container_name: cont-redis
     environment:
       TZ: ${TIME_ZONE}
-      REDIS_URL: ${REDIS_URL}
+      #REDIS_URL: ${REDIS_URL}
     ports:
       - ${REDIS_PORT}:6379
 
