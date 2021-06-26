@@ -13,3 +13,4 @@ foreach ($array as $key)
     $value = $redis->get($key);
     echo "\n$key: `$value`\n";
 }
+echo "total ".count($array)."\n";
