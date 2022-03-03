@@ -1,8 +1,4 @@
 ## xap
 
-### Apache
-```s
-docker-compose up -d
-docker-compose down --rmi all
-```
-# notas
+### Apache y Php 7.3
+- La red 

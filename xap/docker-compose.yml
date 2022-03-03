@@ -14,5 +14,8 @@ services:
 
 networks:
   default:
+    # this network is related to a main container with mariadb and all my databases
+    # in this way I avoid creating a db container for each project check this file for more info:
+    # prj_docker_imgs/mariadb-univ/docker-compose.yml
     name: mariadb-univ_net
     external: true

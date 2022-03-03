@@ -1,3 +1,3 @@
 <?php
-echo "I'm file app/index.php <hr/>";
+echo "<pre>I'm file app/index.php</pre><hr/>";
 phpinfo();
