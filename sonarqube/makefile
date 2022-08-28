@@ -13,7 +13,6 @@ rebuild: ## rebuild containers
 	docker-compose -f docker-compose.yml --env-file ./.env up -d --build --remove-orphans
 	make ps
 
-
 start: ## start
 	docker-compose start
 	docker ps | grep sonarqube
@@ -32,8 +31,11 @@ stop: ## stop containers
 logs-sonarqube: ## Logs sonarqube
 	docker logs cont-sonarqube
 
-ssh-sonarqube: ## ssh's into sonarqube
+ssh-root: ## ssh as root
 	docker exec -it --user root cont-sonarqube /bin/bash
+
+ssh-sonarqube: ## ssh's into sonarqube
+	U_ID=1000 docker exec -it --user 1000 cont-sonarqube /bin/bash
 
 net: ## network details
 	docker network inspect sonarqube-net
