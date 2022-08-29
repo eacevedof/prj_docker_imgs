@@ -1,4 +1,4 @@
-FROM sonarqube:lts-developer
+FROM sonarqube:community
 
 RUN mkdir -p /app \
     && chmod -R +rwx /app \
