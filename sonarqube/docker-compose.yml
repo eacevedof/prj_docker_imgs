@@ -10,7 +10,8 @@ services:
       TZ: ${TIME_ZONE}
       SONARQUBE_JDBC_USERNAME: ${DB_USER}
       SONARQUBE_JDBC_PASSWORD: ${DB_PASSWORD}
-      SONARQUBE_JDBC_URL: "jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true"
+      # sonar a partir de 7.9 no funciona con mysql Exception in thread "main" org.sonar.process.MessageException: Unsupported JDBC driver provider: mysql
+      # SONARQUBE_JDBC_URL: "jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true"
 
     volumes:
       - ./app:/app
