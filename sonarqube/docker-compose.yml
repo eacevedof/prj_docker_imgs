@@ -8,6 +8,9 @@ services:
     container_name: cont-sonarqube
     environment:
       TZ: ${TIME_ZONE}
+      SONARQUBE_JDBC_USERNAME: ${DB_USER}
+      SONARQUBE_JDBC_PASSWORD: ${DB_PASSWORD}
+      SONARQUBE_JDBC_URL: "jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true"
 
     volumes:
       - ./app:/app
