@@ -4,7 +4,9 @@ services:
   php:
     build: ./php8_fpm/
     container_name: cont-php
-    hostname: fpm1
+    hostname: php
+    volumes:
+      - ./app:/code
     expose:
       - "9000"
     networks:
@@ -15,8 +17,6 @@ services:
       context: ./apache
     hostname: apache
     container_name: cont-apache
-    volumes:
-      - ./app:/code
     ports:
       - "8080:80"
     networks:
