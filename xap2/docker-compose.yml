@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  php:
+    build: ./php7_fpm/
+    container_name: cont-fpm1
+    hostname: fpm1
+    expose:
+      - "9000"
+    volumes:
+      - ./app:/code
+    networks:
+      - netxap2
+
+  apache:
+    build:
+      context: ./apache
+    hostname: apache
+    container_name: cont-apache
+    ports:
+      - "8080:80"
+    networks:
+      - netxap2
+
+networks:
+  netxap2:
+    driver: bridge
