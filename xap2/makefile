@@ -12,7 +12,7 @@ destroy-all: ## destroy container and image
 	docker-compose down --rmi all
 
 ssh-php: ## php-frpm
-	docker exec -it --user root cont-fpm1 bash
+	docker exec -it --user root cont-fpm1 sh
 
 ssh-apache: ## apache httpd
 	docker exec -it --user root cont-apache sh
