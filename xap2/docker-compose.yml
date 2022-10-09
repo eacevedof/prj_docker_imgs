@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   php:
-    build: ./php7_fpm/
+    build: ./php8_fpm/
     container_name: cont-fpm1
     hostname: fpm1
     expose:
