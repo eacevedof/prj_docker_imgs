@@ -19,20 +19,16 @@ config:
 destroy-all: ## destroy containers
 	docker-compose -f docker-compose.yml down
 
-build-cron:
-	docker-compose up -d --no-deps --force-recreate --build php-marketing-cron
-	make ps
-
 build-db-:
-	docker-compose up -d --no-deps --force-recreate --build php-marketing-db
+	docker-compose up -d --no-deps --force-recreate --build dbmaria
 	make ps
 
 build-web: #nginx
-	docker-compose up -d --no-deps --force-recreate --build php-marketing-web
+	docker-compose up -d --no-deps --force-recreate --build web
 	make ps
 
-build-be: #fpm
-	docker-compose up -d --no-deps --force-recreate --build php-marketing-be
+build-php: #fpm
+	docker-compose up -d --no-deps --force-recreate --build php
 	make ps
 
 restart-docker: ## restart docker
@@ -43,35 +39,35 @@ restart: ## restart the containers
 	docker-compose stop
 	docker-compose start
 
-restart-be:
-	docker restart php-marketing-be
+restart-php:
+	docker restart php
 
 restart-web:
-	docker restart php-marketing-web
+	docker restart web
 
 restart-db:
-	docker restart php-marketing-db
+	docker restart dbmaria
 
 stop: ## stop containers
 	docker-compose stop
 
 stop-db: ## stop db
-	docker stop php-marketing-db
+	docker stop dbmaria
 
-stop-be: ## stop be
-	docker stop php-marketing-be
+stop-php: ## stop be
+	docker stop php
 
 stop-web: ## stop web
-	docker stop php-marketing-web
+	docker stop web
 
 logs-web: ## logs web
-	docker logs php-marketing-web
+	docker logs web
 
-logs-be: ## logs be
-	docker logs php-marketing-be
+logs-php: ## logs be
+	docker logs php
 
 logs-db: ## logs db
-	docker logs php-marketing-db
+	docker logs dbmaria
 
 rem-logs: ## remove logs
 	rm -fr ./backend_web/logs/*
@@ -80,23 +76,14 @@ rem-logs: ## remove logs
 rem-cache: ## remove diskcache
 	rm -fr ./backend_web/cache/* !.gitkeep
 
-rem-xxx: ## remove xxx-module
-	rm -fr ./backend_web/xxx-module/* !files
-
-ssh-be: ## fpm
-	docker exec -it --user root php-marketing-be bash
+ssh-php: ## fpm
+	docker exec -it --user root php bash
 
 ssh-web: ## web
-	docker exec -it --user root php-marketing-web bash
+	docker exec -it --user root web bash
 
 ssh-db: ## ssh's into mysql
-	docker exec -it --user root php-marketing-db bash
-
-deploy-test: ## deploy codeonly in test
-	py.sh deploy.codeonly mypromos
-
-deploy-prod: ## deploy codeonly in prod
-	py.sh deploy.codeonly mypromos-prod
+	docker exec -it --user root dbmaria bash
 
 log-error: ## logs error
 	cd ./backend_web/logs/error; \
