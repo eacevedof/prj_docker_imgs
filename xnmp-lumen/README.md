@@ -6,9 +6,9 @@ make ssh-php
 ```
 - .env
 ```s
-APP_NAME=My API
+APP_NAME=Lumen
 APP_ENV=local
-APP_KEY=1234567890abcdefghijklmnopqrstuv
+APP_KEY=R03mcM3wPmM33ijells0naMlWm6hjBIg
 APP_DEBUG=true
 APP_URL=http://localhost:8080
 APP_TIMEZONE=UTC
