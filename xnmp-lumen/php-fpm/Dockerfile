@@ -11,5 +11,8 @@ RUN apt-get -y install git
 RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 
 RUN mkdir -p /appdata/www
+RUN chmod -R +x /appdata/www
+
 COPY install-api.sh /appdata/www
+
 WORKDIR /appdata/www
