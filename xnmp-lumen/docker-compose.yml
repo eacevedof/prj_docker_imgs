@@ -21,7 +21,7 @@ services:
 
   php:
     build: ./php-fpm/
-    container_name: cont-php
+    container_name: cont-phpfpm
     hostname: host-php
     volumes:
       - ./app/lumen:/appdata/www/lumen

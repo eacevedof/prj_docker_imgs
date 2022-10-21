@@ -35,24 +35,24 @@ restart-docker: ## restart docker
 	# systemctl restart docker
 	killall Docker && open /Applications/Docker.app
 
-restart: ## restart the containers
+restart-all: ## restart the containers
 	docker-compose stop
 	docker-compose start
 
 restart-php:
-	docker restart php
+	docker restart cont-php
 
 restart-web:
 	docker restart web
 
 restart-db:
-	docker restart dbmaria
+	docker restart db
 
 stop: ## stop containers
 	docker-compose stop
 
 stop-db: ## stop db
-	docker stop dbmaria
+	docker stop db
 
 stop-php: ## stop be
 	docker stop php
@@ -67,7 +67,7 @@ logs-php: ## logs be
 	docker logs php
 
 logs-db: ## logs db
-	docker logs dbmaria
+	docker logs db
 
 rem-logs: ## remove logs
 	rm -fr ./backend_web/logs/*
