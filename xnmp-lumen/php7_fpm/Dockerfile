@@ -1,0 +1,13 @@
+FROM php:8.1-fpm
+
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends \
+    && apt-get install -y vim \
+    && apt-get install -y libicu-dev \
+    && docker-php-ext-install intl pdo pdo_mysql
+
+RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
+
+RUN mkdir -p /appdata/www/lumen
+RUN mkdir -p /appdata/www/front
+WORKDIR /appdata/www

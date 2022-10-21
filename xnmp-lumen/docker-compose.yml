@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  dbmaria:
+    build: ./mariadb/
+    container_name: cmari1 
+    # restart: always
+    hostname: hmari1
+    
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      # MYSQL_DATABASE: db_xnmp
+      # MYSQL_USER: u1
+      # MYSQL_PASSWORD: u1
+    ports:
+      - "3306:3306"      
+    networks:
+      - netxnmp
+    command:
+      'mysqld --innodb-flush-method=fsync'
+
+  php:
+    build: ./php7_fpm/
+    container_name: cfpm1
+    hostname: hfpm1
+    volumes:
+      - ./app/lumen:/appdata/www/lumen
+      - ./app/front:/appdata/www/front
+    networks:
+      - netxnmp
+    depends_on:
+      - dbmaria
+
+  web:
+    build: ./nginx/
+    container_name: cngx1
+    hostname: hngx1
+    ports:
+      - "8080:80"
+      - "8090:90"
+    volumes:
+      - ./app:/code
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - netxnmp
+    depends_on:
+      - dbmaria
+
+#volumes:
+#  - ./db/mysql:/var/lib/mysql
+
+networks:
+  netxnmp:
+    driver: bridge
