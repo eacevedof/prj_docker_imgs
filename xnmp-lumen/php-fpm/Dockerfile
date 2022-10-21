@@ -8,6 +8,5 @@ RUN apt-get update \
 
 RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 
-RUN mkdir -p /appdata/www/lumen
-RUN mkdir -p /appdata/www/front
+RUN mkdir -p /appdata/www
 WORKDIR /appdata/www
