@@ -8,7 +8,7 @@ help: ## Show this help message
 	@echo "targets:"
 	@egrep "^(.+)\:\ ##\ (.+)" ${MAKEFILE_LIST} | column -t -c 2 -s ":#"
 
-rebuild: ## rebuild containers
+rebuild-all: ## rebuild containers
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml up -d --build --remove-orphans
 	docker-compose up -d --no-deps --build dbmaria
