@@ -2,7 +2,7 @@
 function test_mysql()
 {
     //$host = "127.0.0.1";
-    $host = "cmari1"; //nombre del contenedor (docker ps -> NAMES)
+    $host = "cont-db"; //nombre del contenedor (docker ps -> NAMES)
     $db   = "mysql";
     $user = "root";
     $pass = "1234";
