@@ -43,31 +43,31 @@ restart-php:
 	docker restart cont-php
 
 restart-web:
-	docker restart web
+	docker restart cont-web
 
 restart-db:
-	docker restart db
+	docker restart cont-db
 
 stop: ## stop containers
 	docker-compose stop
 
 stop-db: ## stop db
-	docker stop db
+	docker stop cont-db
 
 stop-php: ## stop be
-	docker stop php
+	docker stop cont-php
 
 stop-web: ## stop web
-	docker stop web
+	docker stop cont-web
 
 logs-web: ## logs web
-	docker logs web
+	docker logs cont-web
 
 logs-php: ## logs be
-	docker logs php
+	docker logs cont-php
 
 logs-db: ## logs db
-	docker logs db
+	docker logs cont-db
 
 rem-logs: ## remove logs
 	rm -fr ./backend_web/logs/*
@@ -77,13 +77,13 @@ rem-cache: ## remove diskcache
 	rm -fr ./backend_web/cache/* !.gitkeep
 
 ssh-php: ## fpm
-	docker exec -it --user root php bash
+	docker exec -it --user root cont-php bash
 
 ssh-web: ## web
-	docker exec -it --user root web bash
+	docker exec -it --user root cont-web bash
 
 ssh-db: ## ssh's into mysql
-	docker exec -it --user root dbmaria bash
+	docker exec -it --user root cont-db bash
 
 log-error: ## logs error
 	cd ./backend_web/logs/error; \
@@ -95,28 +95,3 @@ log-sql: ## log queries
 	rm -f *.log; touch app_${TODAY}.log; clear; \
 	tail -f app_${TODAY}.log;
 
-
-prepare-pro:  ## prepare pro
-ifeq ($(OS),Linux)
-	echo "preparing"
-	# echo ${HOME}
-	# git fetch --all; git reset --hard origin/main;
-	rm -f .env.local
-	rm -fr bash
-	rm -fr docker
-	rm -f docker-compose.yml
-	rm -f LICENSE
-	rm -f README.md
-	rm -f TODO.md
-	rm -f ./backend_web/.vendor.zip
-	rm -fr ./backend_web/architecture
-	rm -f ./backend_web/config/*local*
-	rm -f ./backend_web/.env.local
-
-	# rm -f ./backend_web/db/db_mypromos.sql
-	# phinx no tira en <b>Fatal error</b>:  main()
-	# cd ./backend_web/vendor/bin; phinx migrate -e testing; (nok) en pro
-	# cd ./backend_web/db; phinx migrate -e testing;
-	ln -s $${HOME}/php.ini $${PATH_DOM_MYPROMOS}/mypromos.es/backend_web/public/php.ini
-	ln -s $${HOME}/php.ini $${PATH_DOM_MYPROMOS}/mypromos.es/backend_web/console/php.ini
-endif
