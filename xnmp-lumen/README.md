@@ -4,6 +4,14 @@ make rebuild-all
 make ssh-php
     /bin/sh install-api.sh
 ```
+## db
+```s
+# si da un posible error de que no existiera la bd
+# entramos en el contenedor de bd
+make ssh-db
+  mysql -u root -p
+  CREATE DATABASE IF NOT EXISTS `db_api` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
 - .env
 ```s
 APP_NAME=Lumen
@@ -25,15 +33,6 @@ DB_PASSWORD=1234
 
 CACHE_DRIVER=file
 QUEUE_CONNECTION=sync
-```
-
-## db
-```s
-# si da un posible error de que no existiera la bd
-# entramos en el contenedor de bd
-make ssh-db
-  mysql -u root -p
-  CREATE DATABASE IF NOT EXISTS `db_api` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
 ## las apps
