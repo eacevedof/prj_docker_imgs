@@ -32,3 +32,11 @@ QUEUE_CONNECTION=sync
   - [http://localhost:8080](http://localhost:8080)
 - front
   - [http://localhost:8090](http://localhost:8090)
+
+## db
+```s
+# entramos en el contenedor de bd
+make ssh-db
+  mysql -u root -p
+  CREATE DATABASE IF NOT EXISTS `db_api` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```

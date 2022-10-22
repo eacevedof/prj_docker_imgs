@@ -9,7 +9,8 @@ services:
     
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      # MYSQL_DATABASE: db_xnmp
+      # por algun motivo esto no crea la bd
+      MYSQL_DATABASE: db_api
       # MYSQL_USER: u1
       # MYSQL_PASSWORD: u1
     ports:

@@ -19,17 +19,17 @@ config:
 destroy-all: ## destroy containers
 	docker-compose -f docker-compose.yml down
 
-build-db-:
+rebuild-db:
 	docker-compose up -d --no-deps --force-recreate --build dbmaria
-	make ps
+	doker ps
 
-build-web: #nginx
+rebuild-web: #nginx
 	docker-compose up -d --no-deps --force-recreate --build web
-	make ps
+	docker ps
 
-build-php: #fpm
+rebuild-php: #fpm
 	docker-compose up -d --no-deps --force-recreate --build php
-	make ps
+	docker ps
 
 restart-docker: ## restart docker
 	# systemctl restart docker
