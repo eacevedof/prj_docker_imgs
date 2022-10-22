@@ -35,6 +35,7 @@ QUEUE_CONNECTION=sync
 
 ## db
 ```s
+# si da un posible error de que no existiera la bd
 # entramos en el contenedor de bd
 make ssh-db
   mysql -u root -p
