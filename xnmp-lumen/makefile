@@ -88,12 +88,7 @@ ssh-db: ## ssh's into mysql
 	docker exec -it --user root cont-db bash
 
 log-error: ## logs error
-	cd ./backend_web/logs/error; \
-	rm -f *.log; touch app_${TODAY}.log; clear; \
-	tail -f app_${TODAY}.log;
-
-log-sql: ## log queries
-	cd ./backend_web/logs/sql; \
-	rm -f *.log; touch app_${TODAY}.log; clear; \
-	tail -f app_${TODAY}.log;
+	cd ./app/lumen/storage/logs; \
+	rm -f *.log; touch lumen-${TODAY}.log; clear; \
+	tail -f lumen-${TODAY}.log;
 
