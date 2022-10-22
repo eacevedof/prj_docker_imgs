@@ -4,7 +4,6 @@ services:
   dbmaria:
     build: ./mariadb/
     container_name: cont-db
-    # restart: always
     hostname: host-db
     
     environment:
@@ -35,7 +34,9 @@ services:
     container_name: cont-web
     hostname: cont-web
     ports:
+      # api
       - "8080:80"
+      # front
       - "8090:90"
     volumes:
       - ./app/front:/appdata/www/front
@@ -44,9 +45,6 @@ services:
       - net-lumen
     depends_on:
       - dbmaria
-
-#volumes:
-#  - ./db/mysql:/var/lib/mysql
 
 networks:
   net-lumen:
