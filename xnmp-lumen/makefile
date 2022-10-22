@@ -71,12 +71,8 @@ logs-php: ## logs be
 logs-db: ## logs db
 	docker logs cont-db
 
-rem-logs: ## remove logs
-	rm -fr ./backend_web/logs/*
-	rm -f ./backend_web/public/*.log
-
 rem-cache: ## remove diskcache
-	rm -fr ./backend_web/cache/* !.gitkeep
+	rm -fr ./app/lumen/storage/framework/cache/data/* !.gitignore
 
 ssh-php: ## fpm
 	docker exec -it --user root cont-php bash
@@ -84,7 +80,7 @@ ssh-php: ## fpm
 ssh-web: ## web
 	docker exec -it --user root cont-web bash
 
-ssh-db: ## ssh's into mysql
+ssh-db: ## mariadb
 	docker exec -it --user root cont-db bash
 
 log-error: ## logs error
