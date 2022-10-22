@@ -20,6 +20,8 @@ destroy-all: ## destroy containers
 	docker-compose -f docker-compose.yml down
 
 rebuild-db:
+	docker stop cont-db
+	docker rm -f cont-db
 	docker-compose up -d --no-deps --force-recreate --build dbmaria
 	doker ps
 
