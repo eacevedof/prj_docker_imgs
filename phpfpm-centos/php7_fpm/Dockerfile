@@ -10,6 +10,8 @@ RUN yum install -y libxml2-devel openssl-devel \
     libwebp-devel libjpeg-devel freetype-devel
 RUN yum install -y libzip-devel
 RUN yum install -y cmake
+RUN yum install zlib-devel bzip2-devel xz-devel \
+    libzstd-devel openssl-devel 
 # RUN dnf swap centos-linux-repos centos-stream-repos
 # RUN yum update
 
