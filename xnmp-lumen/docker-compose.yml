@@ -39,7 +39,7 @@ services:
       # front
       - "8090:90"
     volumes:
-      - ./app/front:/appdata/www/front
+      - ./app/front:/appdata/www/front/dist
       - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
       - net-lumen
