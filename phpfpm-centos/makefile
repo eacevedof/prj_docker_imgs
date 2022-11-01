@@ -17,4 +17,13 @@ run-cont:
 rebuild: ## 
 	docker rm -f cont-centos
 	docker build -t img-centos ./php7_fpm/.
-	docker run -it --name cont-centos --rm img-centos bash	
+	docker run -it --name cont-centos --rm img-centos bash
+
+logs:
+	docker logs cont-centos
+
+ssh:
+	docker exec -it --user root cont-centos bash
+
+inspect:
+	docker inspect cont-centos
