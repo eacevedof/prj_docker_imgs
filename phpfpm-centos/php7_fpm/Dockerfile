@@ -4,6 +4,9 @@ RUN sed -i -e "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-*
 RUN sed -i -e "s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g" /etc/yum.repos.d/CentOS-*
 RUN dnf clean all
 RUN yum install -y gcc make
+RUN yum install -y libxml2-devel openssl-devel \
+    sqlite-devel curl-devel libpng-devel \
+    libwebp-devel libjpeg-devel freetype-devel
 # RUN dnf swap centos-linux-repos centos-stream-repos
 # RUN yum update
 
