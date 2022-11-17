@@ -4,7 +4,7 @@ services:
   web:
     # image: nginx:latest
     build: ./nginx/
-    container_name: cont-web
+    container_name: cont-web1
     hostname: hostweb
     ports:
       - "3000:80"
@@ -17,8 +17,12 @@ services:
   php:
     # image: php:7-fpm
     build: ./php/
-    container_name: cont-php
+    container_name: cont-php1
     hostname: hostphp
+    environment:
+      PHP_IDE_CONFIG: serverName=ServXdebug
+      PHP_XDEBUG_ENABLED: 1
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9005
     volumes:
       - ./app:/code
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini

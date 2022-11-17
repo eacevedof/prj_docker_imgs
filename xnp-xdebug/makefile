@@ -11,7 +11,6 @@ help: ## Show this help message
 rebuild-all: ## rebuild containers
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml up -d --build --remove-orphans
-	docker-compose up -d --no-deps --build dbmaria
 
 config:
 	docker-compose config
@@ -36,49 +35,28 @@ restart-all: ## restart the containers
 	docker-compose start
 
 restart-php:
-	docker restart cont-php
+	docker restart cont-php1
 
 restart-web:
-	docker restart cont-web
-
-restart-db:
-	docker restart cont-db
+	docker restart cont-web1
 
 stop: ## stop containers
 	docker-compose stop
 
-stop-db: ## stop db
-	docker stop cont-db
-
 stop-php: ## stop be
-	docker stop cont-php
+	docker stop cont-php1
 
 stop-web: ## stop web
-	docker stop cont-web
+	docker stop cont-web1
 
 logs-web: ## logs web
-	docker logs cont-web
+	docker logs cont-web1
 
 logs-php: ## logs be
-	docker logs cont-php
-
-logs-db: ## logs db
-	docker logs cont-db
-
-rem-cache: ## remove diskcache
-	rm -fr ./app/lumen/storage/framework/cache/data/* !.gitignore
+	docker logs cont-php1
 
 ssh-php: ## fpm
-	docker exec -it --user root cont-php bash
+	docker exec -it --user root cont-php1 bash
 
 ssh-web: ## web
-	docker exec -it --user root cont-web bash
-
-ssh-db: ## mariadb
-	docker exec -it --user root cont-db bash
-
-log-error: ## logs error
-	cd ./app/lumen/storage/logs; \
-	rm -f *.log; touch lumen-${TODAY}.log; clear; \
-	tail -f lumen-${TODAY}.log;
-
+	docker exec -it --user root cont-web1 bash
