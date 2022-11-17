@@ -20,12 +20,11 @@ services:
     container_name: cont-php1
     hostname: hostphp
     environment:
-      PHP_IDE_CONFIG: serverName=ServXdebug
+      # PHP_IDE_CONFIG: serverName=ServXdebug
       PHP_XDEBUG_ENABLED: 1
-      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9005
+      # XDEBUG_CONFIG: client_host=host.docker.internal client_port=9005
     volumes:
       - ./app:/code
-      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     networks:
       - netphpxdebug      
 

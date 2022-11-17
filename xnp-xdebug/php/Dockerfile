@@ -8,3 +8,4 @@ RUN apt-get update \
     && pecl install xdebug \
     && docker-php-ext-enable --ini-name 05-opcache.ini opcache xdebug
     
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
