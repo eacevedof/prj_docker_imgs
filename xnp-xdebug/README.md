@@ -28,3 +28,6 @@
   },
 ]
 ```
+
+# result
+![](https://resources.theframework.es/eduardoaf.com/20221117/205113-vscode-xdebug-docker.png)
