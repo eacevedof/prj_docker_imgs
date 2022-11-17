@@ -12,7 +12,7 @@ services:
       - ./app:/code
       - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
-      - netngx
+      - netphpxdebug
 
   php:
     # image: php:7-fpm
@@ -23,8 +23,8 @@ services:
       - ./app:/code
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     networks:
-      - netngx      
+      - netphpxdebug      
 
 networks:
-  netngx:
+  netphpxdebug:
     driver: bridge
