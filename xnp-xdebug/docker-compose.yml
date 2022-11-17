@@ -4,8 +4,8 @@ services:
   web:
     # image: nginx:latest
     build: ./nginx/
-    container_name: cngx
-    hostname: hngx
+    container_name: cont-web
+    hostname: hostweb
     ports:
       - "3000:80"
     volumes:
@@ -17,8 +17,8 @@ services:
   php:
     # image: php:7-fpm
     build: ./php/
-    container_name: cfpm
-    hostname: hfpm
+    container_name: cont-php
+    hostname: hostphp
     volumes:
       - ./app:/code
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
