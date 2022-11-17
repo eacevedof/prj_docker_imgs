@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  web:
+    # image: nginx:latest
+    build: ./nginx/
+    container_name: cngx
+    hostname: hngx
+    ports:
+      - "3000:80"
+    volumes:
+      - ./app:/code
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - netngx
+
+  php:
+    # image: php:7-fpm
+    build: ./php/
+    container_name: cfpm
+    hostname: hfpm
+    volumes:
+      - ./app:/code
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    networks:
+      - netngx      
+
+networks:
+  netngx:
+    driver: bridge
