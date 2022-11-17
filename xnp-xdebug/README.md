@@ -16,6 +16,7 @@
       "XDEBUG_CONFIG": "client_port=${port}"
     },      
     "pathMappings": {
+      //path-folder-in-docker: path-in-host-machine
       "/code": "/Users/ioedu/projects/prj_docker_imgs/xnp-xdebug/app"
     },
     "xdebugSettings": {
