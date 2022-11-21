@@ -17,7 +17,7 @@
     },      
     "pathMappings": {
       //path-folder-in-docker: path-in-host-machine
-      "/code": "/Users/ioedu/projects/prj_docker_imgs/xnp-xdebug/app"
+      "/code": "some-path/xnp-xdebug/app"
     },
     "xdebugSettings": {
       "max_data": 65535,
