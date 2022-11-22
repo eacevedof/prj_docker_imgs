@@ -50,3 +50,30 @@ eval $cmd
   - despues se copia solo las carpetas (con las bd)
   - **Obsoleto**
     - Esto antes funcionaba, ahora no reconoce las tablas, solo la bd
+
+## error repetido
+2022-11-21 18:44:02+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.10.2+maria~ubu2204 started.
+2022-11-21 18:44:03+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2022-11-21 18:44:03+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:10.10.2+maria~ubu2204 started.
+2022-11-21 18:44:03+00:00 [Note] [Entrypoint]: MariaDB upgrade information missing, assuming required
+2022-11-21 18:44:03+00:00 [Note] [Entrypoint]: MariaDB upgrade (mariadb-upgrade) required, but skipped due to $MARIADB_AUTO_UPGRADE setting
+2022-11-21 18:44:03 0 [Note] mysqld (server 10.10.2-MariaDB-1:10.10.2+maria~ubu2204) starting as process 1 ...
+2022-11-21 18:44:03 0 [Warning] Setting lower_case_table_names=2 because file system for /var/lib/mysql/ is case insensitive
+2022-11-21 18:44:03 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+2022-11-21 18:44:03 0 [Note] InnoDB: Number of transaction pools: 1
+2022-11-21 18:44:03 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2022-11-21 18:44:03 0 [Note] mysqld: O_TMPFILE is not supported on /tmp (disabling future attempts)
+2022-11-21 18:44:03 0 [Note] InnoDB: Using liburing
+2022-11-21 18:44:03 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+2022-11-21 18:44:03 0 [Note] InnoDB: Completed initialization of buffer pool
+2022-11-21 18:44:03 0 [Note] InnoDB: Buffered log writes (block size=512 bytes)
+2022-11-21 18:44:03 0 [ERROR] InnoDB: Upgrade after a crash is not supported. The redo log was created with MariaDB 10.5.8.
+2022-11-21 18:44:03 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+2022-11-21 18:44:03 0 [Note] InnoDB: Starting shutdown...
+2022-11-21 18:44:03 0 [ERROR] Plugin 'InnoDB' init function returned error.
+2022-11-21 18:44:03 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+2022-11-21 18:44:03 0 [Note] Plugin 'FEEDBACK' is disabled.
+2022-11-21 18:44:03 0 [Note] Zerofilling moved table:  './mysql/plugin'
+2022-11-21 18:44:03 0 [ERROR] Unknown/unsupported storage engine: InnoDB
+2022-11-21 18:44:03 0 [ERROR] Aborting
+
