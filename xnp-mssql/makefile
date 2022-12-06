@@ -26,6 +26,10 @@ rebuild-php: #fpm
 	docker-compose up -d --no-deps --force-recreate --build php
 	docker ps
 
+rebuild-db: #mssql
+	docker-compose up -d --no-deps --force-recreate --build mssql
+	docker ps
+
 restart-docker: ## restart docker
 	# systemctl restart docker
 	killall Docker && open /Applications/Docker.app
@@ -39,6 +43,9 @@ restart-php:
 
 restart-web:
 	docker restart cont-web2
+
+restart-db:
+	docker restart cont-mssql
 
 stop: ## stop containers
 	docker-compose stop
@@ -55,8 +62,14 @@ logs-web: ## logs web
 logs-php: ## logs be
 	docker logs cont-php2
 
+logs-db: ## logs db
+	docker logs cont-mmsql
+
 ssh-php: ## fpm
 	docker exec -it --user root cont-php2 bash
 
 ssh-web: ## web
 	docker exec -it --user root cont-web2 bash
+
+ssh-db: ## db
+	docker exec -it --user root cont-mssql bash
