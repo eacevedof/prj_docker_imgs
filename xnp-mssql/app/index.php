@@ -1,4 +1,5 @@
 <?php
+
 function test_mssql()
 {
     $host = "cont-mssql";
@@ -42,5 +43,7 @@ function test_mssql()
     }
 }//test_mssql()
 
-test_mssql();
+//test_mssql();
+//mssql driver installed (pecl install pdo_sqlsrv sqlsrv):
+echo (PHP_VERSION_ID - PHP_RELEASE_VERSION);
 phpinfo();
