@@ -63,7 +63,7 @@ logs-php: ## logs be
 	docker logs cont-php2
 
 logs-db: ## logs db
-	docker logs cont-mmsql
+	docker logs cont-mssql
 
 ssh-php: ## fpm
 	docker exec -it --user root cont-php2 bash
