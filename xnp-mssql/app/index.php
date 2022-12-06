@@ -18,14 +18,14 @@ function test_mssql()
     {
         $pdo = new \PDO($dsn, $user, $pass, $options);
         $sql = "
-          SELECT name AS object_name
-          ,SCHEMA_NAME(schema_id) AS schema_name
-          ,type_desc
-          ,create_date
-          ,modify_date
-          FROM sys.objects
-          WHERE modify_date > GETDATE() - <n_days>
-          ORDER BY modify_date;
+        SELECT name AS object_name
+        ,SCHEMA_NAME(schema_id) AS schema_name
+        ,type_desc
+        ,create_date
+        ,modify_date
+        FROM sys.objects
+        WHERE modify_date > GETDATE() - 1
+        ORDER BY modify_date;
         ";
         echo "<pre>";
         echo "<b>$sql</b>\n";
