@@ -3,6 +3,15 @@ version: "3"
 services:
   mssql:
     build: ./mssql/
+    environment:
+      - MSSQL_PID=Express
+      - MSSQL_DATABASE=${MSSQL_DATABASE}
+      - SA_PASSWORD=${MSSQL_PASSWORD}
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./mssql/db:/var/opt/mssql
+    ports:
+      - "1433:1433"    
     container_name: cont-mssql
     hostname: hostmssql
     networks:
