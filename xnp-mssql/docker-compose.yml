@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  mssql:
+    build: ./mssql/
+    container_name: cont-mssql
+    hostname: hostmssql
+    networks:
+      - netmssql
+  web:
+    build: ./nginx/
+    container_name: cont-web2
+    hostname: hostweb
+    ports:
+      - "3000:80"
+    volumes:
+      - ./app:/code
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - netmssql
+
+  php:
+    build: ./php/
+    container_name: cont-php2
+    hostname: hostphp
+    volumes:
+      - ./app:/code
+    networks:
+      - netmssql      
+
+networks:
+  netmssql:
+    driver: bridge
