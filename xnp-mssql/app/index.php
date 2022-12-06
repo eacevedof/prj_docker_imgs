@@ -5,8 +5,9 @@ function test_mssql()
     $host = "cont-mssql";
     $db   = "db_eduardoaf";
     $user = "sa";
-    $pass = "sa";
+    $pass = "Eaf-2022";
     $charset = "utf8";
+    $port = "1433";
 
     $options = [
         \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
@@ -17,7 +18,8 @@ function test_mssql()
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
     try 
     {
-        $pdo = new \PDO($dsn, $user, $pass, $options);
+        //$pdo = new \PDO($dsn, $user, $pass, $options);
+        $pdo = new \PDO("sqlsrv:Server=$host,$port;Database=$db", $user , $pass);
         $sql = "
         SELECT name AS object_name
         ,SCHEMA_NAME(schema_id) AS schema_name
@@ -43,7 +45,7 @@ function test_mssql()
     }
 }//test_mssql()
 
-//test_mssql();
+test_mssql();
 //mssql driver installed (pecl install pdo_sqlsrv sqlsrv):
-echo (PHP_VERSION_ID - PHP_RELEASE_VERSION);
-phpinfo();
+//echo (PHP_VERSION_ID - PHP_RELEASE_VERSION);
+//phpinfo();
