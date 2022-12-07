@@ -41,6 +41,7 @@ function test_mssql()
     } 
     catch (\PDOException $e) 
     {
+        print_r($e);
         throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
 }//test_mssql()
