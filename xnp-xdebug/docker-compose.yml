@@ -17,6 +17,9 @@ services:
   php:
     # image: php:7-fpm
     build: ./php/
+    environment:
+      # necesario para phpstorm
+      PHP_IDE_CONFIG: serverName=ServXdebug
     container_name: cont-php1
     hostname: hostphp
     volumes:
