@@ -23,10 +23,6 @@ services:
     ports:
       - "3306:3306"
 
-    command:
-      'mysqld --innodb-flush-method=fsync'
-      # 'mysqld --sql_mode="STRICT_ALL_TABLES,NO_ENGINE_SUBSTITUTION"'
-
     networks:
       - net
 
