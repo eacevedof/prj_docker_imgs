@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  kalilinux:
+    build:
+      context: docker
+    hostname: hostkalilinux
+    container_name: cont-kalilinux
+    environment:
+      TZ: ${TIME_ZONE}
+    volumes:
+      - ./docker/bash:/root/bash
+    networks:
+      - kalilinux-net
+      - mariadb-univ_net
+
+networks:
+  kalilinux-net:
+  mariadb-univ_net:
+    external: true
