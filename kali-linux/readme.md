@@ -1,5 +1,8 @@
 ## Kali linux
 
+- [El Pingüino - Kali Linux](https://www.youtube.com/watch?v=5gUdLWph2s4)
+- [Repo original](https://github.com/Maalfer/Dockerfile_Hacking/blob/main/Dockerfile)
+
 ### comandos nmap
 ```sh
 # obtenemos la ip de la red: 192.17.0.34
