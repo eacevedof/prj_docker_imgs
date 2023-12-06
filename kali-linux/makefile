@@ -11,7 +11,7 @@ rebuild-all: ## rebuild all services containers in docker-compose
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml up -d --build --remove-orphans
 	sleep 5s
-	docker ps
+	docker ps | grep kali
 
 stop-kali: ## stop cont-kalilinux
 	docker stop cont-kalilinux
@@ -33,10 +33,6 @@ config: ## show docker compose configuration
 
 destroy-all: ## destroy containers
 	docker-compose -f docker-compose.yml down
-
-ssh-kl: ## ssh redis
-	# docker exec -it --user root cont-kalilinux bash
-	docker attach cont-kalilinux
 
 logs-kali: ## shows logs
 	docker logs cont-kalilinux
