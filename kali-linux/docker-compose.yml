@@ -7,12 +7,13 @@ services:
     hostname: hostkalilinux
     container_name: cont-kalilinux
     environment:
-      TZ: ${TIME_ZONE}
+      TZ: UTC
     volumes:
       - ./docker/bash:/root/bash
     networks:
       - kalilinux-net
       - mariadb-univ_net
+    command: tail -f /dev/null
 
 networks:
   kalilinux-net:
