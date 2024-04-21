@@ -1,19 +1,8 @@
-# python-3x
-# docker-compose up
-# creará una imagen: 
 version: "3.3"
 
 services:
-  service-db:
+  service-py:
     build: python-alpine/
     container_name: cont-python-3x
     hostname: host-python-3x
 
-    ports:
-      - "7766:7766"
-
-    networks:
-      - net
-
-networks:
-  net:
