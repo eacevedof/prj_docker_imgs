@@ -31,6 +31,8 @@ RUN apt install python3-impacket -y && \
     apt install airgeddon -y && \
     apt install set -y
 
+RUN apt install net-tools -y && \
+		apt install iputils-ping -y
 # RUN mkdir -p /root/bash
 # RUN chmod -R +x /root/bash
 # WORKDIR /root/bash

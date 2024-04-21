@@ -4,18 +4,12 @@ services:
   kalilinux:
     build:
       context: docker
+    network_mode: "host" 
     hostname: hostkalilinux
     container_name: cont-kalilinux
     environment:
       TZ: UTC
     volumes:
       - ./docker/bash:/root/bash
-    networks:
-      - kalilinux-net
-      - mariadb-univ_net
+      
     command: tail -f /dev/null
-
-networks:
-  kalilinux-net:
-  mariadb-univ_net:
-    external: true
