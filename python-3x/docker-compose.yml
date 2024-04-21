@@ -1,0 +1,30 @@
+# maria-univ
+# docker-compose up
+# creará una imagen: 
+version: "3.3"
+
+services:
+  service-db:
+    build: python-alpine/
+    container_name: cont-python-3x
+    hostname: host-maria-univ
+
+    environment:
+      # .env.DB_USER
+      MYSQL_USER: ${DB_USER}
+      # .env.DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+    volumes:
+      # .env.DB_FOLDER=/Users/ioedu/projects/db_mariadb
+      - ${DB_FOLDER}/initdb:/docker-entrypoint-initdb.d/
+      - ${DB_FOLDER}/mysql:/var/lib/mysql
+    
+    ports:
+      - "3306:3306"
+
+    networks:
+      - net
+
+networks:
+  net:
