@@ -1,4 +1,4 @@
-# maria-univ
+# python-3x
 # docker-compose up
 # creará una imagen: 
 version: "3.3"
@@ -7,7 +7,7 @@ services:
   service-db:
     build: python-alpine/
     container_name: cont-python-3x
-    hostname: host-maria-univ
+    hostname: host-python-3x
 
     environment:
       # .env.DB_USER
