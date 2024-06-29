@@ -8,10 +8,14 @@
   - https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/openssh/
   - comprobar si la instancia acepta ssh
   ```
-  grep PubkeyAuthentication /etc/ssh/sshd_config
-  ssh-keygen -t ed25519 -b 4096 -C "root@139.59.123.45" -f my-digocean
+  # comprobar si esta habilitado ssh
+  grep PubkeyAuthentication /etc/ssh/sshd_config 
   
+  # permisos escritura para esciribir claves publicas
   chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys
+  
+  # las claves de los clientes permitidas (las .pub)
+  cat ~/.ssh/authorized_keys
   ```
   - comandos de instancia
   ```
