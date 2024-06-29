@@ -1,0 +1,1 @@
+[Pelado Nerd - Kubernetes CI/CD](https://youtu.be/IdOO3R_1F08)
