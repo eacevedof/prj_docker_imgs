@@ -31,7 +31,7 @@ services:
     image: pablokbs/hola-docker:99827129d4e0b6ff3afe90001610a282bf2c1709
     restart: unless-stopped
     environment:
-      - VIRTUAL_HOST=nerdearla.example.com
-      - LETSENCRYPT_HOST=example.com
-      - LETSENCRYPT_EMAIL=eacevedof@yahoo.es
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
 
