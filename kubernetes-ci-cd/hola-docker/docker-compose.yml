@@ -27,6 +27,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   nginx-nerdearla:
+    # https://github.com/pablokbs/hola-docker/blob/master/index.html
     # https://hub.docker.com/r/pablokbs/hola-docker/tags
     image: pablokbs/hola-docker:99827129d4e0b6ff3afe90001610a282bf2c1709
     restart: unless-stopped
