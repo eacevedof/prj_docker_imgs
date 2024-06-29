@@ -7,5 +7,5 @@
   - https://cloud.digitalocean.com/account/security?i=ffc36b
   - https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/openssh/
   ```
-  - ssh-keygen -t ed25519 -b 4096 -C "root@139.59.123.45" -f my-digocean
+  ssh-keygen -t ed25519 -b 4096 -C "root@139.59.123.45" -f my-digocean
   ```
