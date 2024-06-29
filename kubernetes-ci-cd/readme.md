@@ -17,6 +17,11 @@
   # las claves de los clientes permitidas (las .pub)
   cat ~/.ssh/authorized_keys
   ```
+  - conectar desde el cliente
+  ```
+  # la ip es la que te aparece en el droplet
+  ssh -i ./ruta-clave-privada root@139.59.921.29 
+  ```
   - comandos de instancia
   ```
   reboot
