@@ -2,3 +2,5 @@
 .idea
 .env
 hola-docker/.env
+hola-docker/db_mysql/*
+hola-docker/db_mysql/.gitkeep
