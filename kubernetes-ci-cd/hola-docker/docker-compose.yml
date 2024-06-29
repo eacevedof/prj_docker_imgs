@@ -5,7 +5,7 @@ services:
   wordpress:
     image: wordpress:latest
     ports:
-      - 80:80
+      - 89:80
     environment:
         WORDPRESS_DB_HOST: mysql
         WORDPRESS_DB_USER: root
