@@ -1,1 +1,3 @@
-[Pelado Nerd - Kubernetes CI/CD](https://youtu.be/IdOO3R_1F08)
+- [Pelado Nerd - Kubernetes CI/CD](https://youtu.be/IdOO3R_1F08)
+- [Repo hola docker](https://github.com/pablokbs/hola-docker/blob/master/index.html)
+- [Imagen hola docker](https://hub.docker.com/r/pablokbs/hola-docker/tags)
